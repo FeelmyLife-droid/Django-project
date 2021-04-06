@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+{% block title %} Directors {% endblock title %}
+{% block header %} Список директоров {% endblock header %}
+
+
+{% block content %}
+
+<form class="form-group" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+
+{% endblock content %}
+

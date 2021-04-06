@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+{% block title %} Банки {% endblock title %}
+{% block header %} Список Банков {% endblock header %}
+
+
+{% block content %}
+<div class="col-md-4 my-2">
+    <table class="table table-striped">
+        <tr>
+            <th>Название банка</th>
+            <th>Баланс</th>
+            <th>Дата обновления</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td><a class="nav-link" href="#">{{object.bank__name}}</a></td>
+            <td>{{object.total|floatformat:"-2"}}</td>
+            <td>{{object.date_updated}}</td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}

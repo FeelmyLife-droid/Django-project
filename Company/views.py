@@ -1,0 +1,40 @@
+from django.db.models import Sum
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
+
+from Company.models import Company
+
+
+class CompanyViews(ListView):
+    model = Company
+    context_object_name = 'latest_articles'
+    template_name = "Company/company.html"
+
+
+class CompanyDetail(DetailView):
+    model = Company
+    template_name = "Company/company_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['banki'] = self.object.company.filter(company_id=self.object.pk)
+        context['balance'] = self.object.company.aggregate(balance=Sum('balance', decimal_places=2))
+
+        return context
+
+
+class CompanyAdd(CreateView):
+    model = Company
+    template_name = "Company/company_form.html"
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('company:company')
+
+
+class CompanyDelete(DeleteView):
+    model = Company
+    success_url = reverse_lazy('company:company')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

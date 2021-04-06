@@ -1,0 +1,48 @@
+{% extends "home.html" %}
+{% block title %} Info Directors {% endblock title %}
+{% block header %} Информация о директоре {% endblock header %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Полных лет: {{age}}</h5>
+            <h5>ФИО: {{object.name}}</h5>
+            <h5>ИНН: {{object.inn}}</h5>
+            <h5>Дата рождения: {{object.date_of_birth}}</h5>
+            <h5>Место рождения: {{object.place_of_birth}}</h5>
+            <h5>Номер паспорта: {{object.id_passport}}</h5>
+            <h5>Дата выдачи: {{object.date_of_issue}}</h5>
+            <h5>Кем выдан: {{object.issued_by}}</h5>
+            <h5>Код подразделения: {{object.department_сode}}</h5>
+            <h5>Улица: {{object.street}}</h5>
+            <h5>Дом: {{object.house}}</h5>
+            <h5>Кем выдан: {{object.issued_by}}</h5>
+            <h5>Фирмы:
+                {% for firm in firms %}
+
+                <a href="{% url 'company:detail_company' firm.pk %}"></br>{{firm}}</a>
+                {% endfor %}
+            </h5>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+
+</div>
+
+
+<div class="row">
+    <form action="{% url 'company:delete_company' object.pk %}" method="post">{% csrf_token %}
+        <button type="submit" class="btn btn-warning"> Редактировать</button>
+    </form>
+    <form action="{% url 'company:delete_company' object.pk %}" method="post">{% csrf_token %}
+        <button type="submit" class="btn btn-danger"> Удалить</button>
+    </form>
+</div>
+
+{% endblock content %}

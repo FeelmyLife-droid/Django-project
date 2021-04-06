@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+{% block title %} Directors {% endblock title %}
+{% block header %} Список директоров {% endblock header %}
+
+
+{% block content %}
+<div class="col-md-10 mx-auto my-2">
+    <table class="table table-striped">
+        <tr>
+            <th>ФИО</th>
+            <th>ИНН</th>
+            <th>Дата рождения</th>
+            <th>Место рождения</th>
+            <th>Номер паспорта</th>
+            <th>Дата выдачи</th>
+            <th>Кем выдан</th>
+            <th>Код Подразделения</th>
+            <th>Улица</th>
+            <th>Дом</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td><a href="{% url 'directors:detail_directors' object.pk%}">{{object.name}}</a></td>
+            <td>{{object.inn}}</td>
+            <td>{{object.date_of_birth}}</td>
+            <td>{{object.place_of_birth}}</td>
+            <td>{{object.id_passport}}</td>
+            <td>{{object.date_of_issue}}</td>
+            <td>{{object.issued_by}}</td>
+            <td>{{object.department_сode}}</td>
+            <td>{{object.street}}</td>
+            <td>{{object.house}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

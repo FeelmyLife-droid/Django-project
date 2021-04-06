@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+{% block title %} Компании {% endblock title %}
+{% block header %} Список фирм {% endblock header %}
+
+
+{% block content %}
+<div class="col-md-10 mx-auto my-2">
+    <table class="table table-striped">
+        <tr>
+            <th>Название фирмы</th>
+            <th>ИНН</th>
+            <th>ОКВЭД</th>
+            <th>Юр.Адресс</th>
+            <th>Юр.Город</th>
+            <th>Дата подачи</th>
+            <th>Дата регистрации</th>
+            <th>Номер устава</th>
+            <th>Директор</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td><a href="{% url 'company:detail_company' object.pk %}">{{object.name}}</a></td>
+            <td>{{object.inn}}</td>
+            <td>{{object.okved}}</td>
+            <td>{{object.legal_address}}</td>
+            <td>{{object.legal_city}}</td>
+            <td>{{object.date_of_application}}</td>
+            <td>{{object.registration_date}}</td>
+            <td>{{object.charter_number}}</td>
+            <td>{{object.directors}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+{% block title %} Info Company {% endblock title %}
+{% block header %} Информация о компании {% endblock header %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h5>Название:{{object.name}}</h5>
+            <h5>ИНН: {{object.inn}}</h5>
+            <h5>Директор: <a href="{% url 'directors:detail_directors' object.directors.pk%}">{{object.directors}}</a></h5>
+            <h5>Юр.Адресс: {{object.legal_address}}</h5>
+            <h5>Дата регистрации: {{object.legal_city}}</h5>
+            <h5>ОКВЭД: {{object.okved | title}}</h5>
+            <h5>Дата регистрации: {{object.registration_date}}</h5>
+            <h5>Дата подачи: {{object.date_of_application}}</h5>
+            <h5>Номер устава: {{object.charter_number}}</h5>
+        </div>
+        <div class="col-6">
+            <h5>Банки:
+                 {% for accaunt in banki %}
+                    <a href="#"></br>{{accaunt.bank}} : {{accaunt.balance}}</a>
+                {% endfor %}
+            </h5>
+
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="row">-->
+<!--    <form action="{% url 'company:delete_company' object.pk %}" method="post">{% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-warning"> Редактировать</button>-->
+<!--    </form>-->
+<!--    <form action="{% url 'company:delete_company' object.pk %}" method="post">{% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-danger"> Удалить</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+{% endblock content %}
