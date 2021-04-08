@@ -3,6 +3,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 
 from Company.models import Company
+from test import check_age
 
 
 class CompanyViews(ListView):
@@ -18,8 +19,10 @@ class CompanyDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['banki'] = self.object.company.filter(company_id=self.object.pk)
+        context['age'] = check_age(self.object.directors.date_of_birth)
         context['balance'] = self.object.company.aggregate(balance=Sum('balance', decimal_places=2))
 
+        print(context)
         return context
 
 

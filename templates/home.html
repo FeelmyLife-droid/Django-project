@@ -34,12 +34,12 @@
             </ul>
         </div>
     </nav>
-    <h1> {% block header %} {%endblock header%}</h1>
-    <form action="{% url 'bank:bank' %}" method="GET">
-        {% csrf_token %}
-        <input type="submit" class="btn btn-success" value="Общий баланс :{{balance.balance|floatformat:'-2'}} рублей">
-    </form>
-    {% block content %} {%endblock content%}
+    <div class="container-fluid">
+        <div class="container text-center">
+            <h1 > {% block header %} {%endblock header%}</h1>
+        </div>
+        {% block content %} {%endblock content%}
+    </div>
 </div>
 
 

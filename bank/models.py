@@ -27,7 +27,6 @@ class BankAccount(models.Model):
     def update(self, *args, **kwargs):
         kwargs.update({'updated': timezone.now})
         super().update(*args, **kwargs)
-
         return self
 
     def __str__(self):

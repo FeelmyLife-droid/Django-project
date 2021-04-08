@@ -4,6 +4,10 @@
 
 
 {% block content %}
+<form action="{% url 'bank:bank' %}" method="GET">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-success" value="Общий баланс :{{balance.balance|floatformat:'-2'}} рублей">
+</form>
 <div class="col-md-4 my-2">
     <table class="table table-striped">
         <tr>

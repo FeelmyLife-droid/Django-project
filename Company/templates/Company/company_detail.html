@@ -1,7 +1,6 @@
 {% extends "home.html" %}
 {% block title %} Info Company {% endblock title %}
-{% block header %} Информация о компании {% endblock header %}
-
+{% block header %} Информация о «{{object.name}}» {% endblock header %}
 
 {% block content %}
 <div class="container">
@@ -9,7 +8,8 @@
         <div class="col-6">
             <h5>Название:{{object.name}}</h5>
             <h5>ИНН: {{object.inn}}</h5>
-            <h5>Директор: <a href="{% url 'directors:detail_directors' object.directors.pk%}">{{object.directors}}</a></h5>
+            <h5>Директор: <a
+                    href="{% url 'directors:detail_directors' object.directors.pk%}">{{object.directors.name}}</a></h5>
             <h5>Юр.Адресс: {{object.legal_address}}</h5>
             <h5>Дата регистрации: {{object.legal_city}}</h5>
             <h5>ОКВЭД: {{object.okved | title}}</h5>
@@ -18,24 +18,26 @@
             <h5>Номер устава: {{object.charter_number}}</h5>
         </div>
         <div class="col-6">
-            <h5>Банки:
-                 {% for accaunt in banki %}
-                    <a href="#"></br>{{accaunt.bank}} : {{accaunt.balance}}</a>
-                {% endfor %}
-            </h5>
-
+            <p>Информация по директору:</p>
+            <p>Полных лет: {{age}}</p>
+            <p>ФИО: {{object.directors.name}}</p>
+            <p>ИНН: {{object.directors.inn}}</p>
+            <p>Дата рождения: {{object.directors.date_of_birth}}</p>
+            <p>Место рождения: {{object.directors.place_of_birth}}</p>
+            <p>Номер паспорта: {{object.directors.id_passport}}</p>
+            <p>Дата выдачи: {{object.directors.date_of_issue}}</p>
+            <p>Кем выдан: {{object.directors.issued_by}}</p>
+            <p>Код подразделения: {{object.directors.department_сode}}</p>
+            <p>Улица: {{object.directors.street}}</p>
+            <p>Дом: {{object.directors.house}}</p>
+            <p>Кем выдан: {{object.directors.issued_by}}</p>
         </div>
     </div>
 </div>
-
-
-<!--<div class="row">-->
-<!--    <form action="{% url 'company:delete_company' object.pk %}" method="post">{% csrf_token %}-->
-<!--        <button type="submit" class="btn btn-warning"> Редактировать</button>-->
-<!--    </form>-->
-<!--    <form action="{% url 'company:delete_company' object.pk %}" method="post">{% csrf_token %}-->
-<!--        <button type="submit" class="btn btn-danger"> Удалить</button>-->
-<!--    </form>-->
-<!--</div>-->
-
+<h5>Банки:
+    {% for accaunt in banki %}
+    <a href="#"></br>{{accaunt.bank}} : {{accaunt.balance}}</a>
+    {% endfor %}
+</h5>
+</div>
 {% endblock content %}
