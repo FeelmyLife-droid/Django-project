@@ -24,12 +24,12 @@ def get_balance(account, bank_id, login=None, password=None):
 
 @shared_task
 def update_balance():
-    # firms = BankAccount.objects.exclude(bank_id=2)
-    # for firm in firms:
-    #     get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    # directors = Director.objects.all()
-    # for dir in directors:
-    get_balance_alfa.delay(3)
+    firms = BankAccount.objects.exclude(bank_id=2)
+    for firm in firms:
+        get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
+    directors = Director.objects.all()
+    for dir in directors:
+        get_balance_alfa.delay(dir.pk)
 
 
 def get_balance_otk(account=4, login=None, password=None):
@@ -58,7 +58,7 @@ def get_balance_alfa(id):
         login, password = accounts[0].login_bank, accounts[0].password_bank
         print('Запрос в банк ALFA')
         options = webdriver.ChromeOptions()
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         prefs = {"profile.managed_default_content_settings.images": 2}
         options.add_experimental_option("prefs", prefs)
         browser = webdriver.Chrome(options=options,
@@ -87,7 +87,7 @@ def get_balance_alfa(id):
         for bal in dict_firm.items():
             if bal[0] in list:
                 BankAccount.objects.filter(company__name=bal[0], bank_id=2).update(
-                    balance=bal[1].split(" ")[0].replace(",", ".")
+                    balance=bal[1].split("R")[0].replace(",", ".").replace(" ","")
                 )
 
 
