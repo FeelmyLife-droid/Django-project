@@ -24,7 +24,7 @@ SECRET_KEY = 'l0^pz%am#wv%w_5q4=du7=#7tbj^3pb9@faa1e@zqpj8)9vqnf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Director',
     'Company',
     'bank',
+    'webhooks',
     'django_celery_beat',
     'django_celery_results',
 ]

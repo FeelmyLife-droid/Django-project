@@ -1,8 +1,8 @@
 import time
 from random import randint
 
+import httpx
 from celery import shared_task
-from django.db.models import QuerySet
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -16,7 +16,7 @@ def get_balance(account, bank_id, login=None, password=None):
         1: get_balance_otk,
         2: get_balance_alfa,
         3: get_balance_modul,
-        4: get_balance_rere
+        4: get_balance_raif
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -52,8 +52,8 @@ def get_balance_otk(account=4, login=None, password=None):
 
 
 @shared_task
-def get_balance_alfa(id):
-    accounts = BankAccount.objects.filter(company__directors=id, bank_id=2)
+def get_balance_alfa(name_director):
+    accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
     if accounts:
         login, password = accounts[0].login_bank, accounts[0].password_bank
         print('Запрос в банк ALFA')
@@ -87,17 +87,43 @@ def get_balance_alfa(id):
         for bal in dict_firm.items():
             if bal[0] in list:
                 BankAccount.objects.filter(company__name=bal[0], bank_id=2).update(
-                    balance=bal[1].split("R")[0].replace(",", ".").replace(" ","")
+                    balance=bal[1].split("R")[0].replace(",", ".").replace(" ", "")
                 )
 
 
 def get_balance_modul(account, login=None, password=None):
     print('Запрос в банк MODUL')
-    time.sleep(randint(5, 10))
+    url = "https://api.modulbank.ru/v1/account-info"
+    headers = {
+        "Host": "api.modulbank.ru",
+        "Content-Type": "application/json",
+        "Authorization": f'Bearer {login}'
+    }
+    response = httpx.post(url=url, headers=headers).json()
+    balance = 0
+    for i in response[0]['bankAccounts']:
+        balance + float(i["balance"])
+    BankAccount.objects.filter(pk=account).update(balance=balance)
     print(login, '|', password)
 
 
-def get_balance_rere(account, login=None, password=None):
-    print('Запрос в банк RERE')
-    time.sleep(randint(5, 10))
-    print(login, '|', password)
+def get_balance_raif(account, login=None, password=None):
+    print('Запрос в банк Raf')
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    browser = webdriver.Chrome(options=options,
+                               executable_path='/Users/qeqe/Desktop/Работа/siteDjango/mysite/chromedriver')
+    browser.get('https://sso.rbo.raiffeisen.ru/signin')
+    time.sleep(3)
+    browser.find_element_by_xpath("//a[@href='https://www.rbo.raiffeisen.ru']").click()
+    time.sleep(3)
+    browser.find_element_by_name('login').send_keys(str(login))
+    browser.find_element_by_name('password').send_keys(str(password))
+    browser.find_element_by_css_selector(".form__button").click()
+
+    time.sleep(10)
+    bal = browser.find_element_by_css_selector(".b-home-container__accounts-list-item-balance").text
+    balance = float(bal.split('₽')[0])
+    browser.close()
+    BankAccount.objects.filter(pk=account).update(balance=balance)
+

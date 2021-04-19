@@ -10,4 +10,6 @@ urlpatterns = [
     path('directors/', include('Director.urls')),
     path('company/', include('Company.urls')),
     path('', include('bank.urls')),
+    path('webhooks/', include('webhooks.urls')),
+
 ]
