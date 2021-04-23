@@ -1,6 +1,8 @@
 import time
+
 import httpx
 from celery import shared_task
+from django.utils import timezone
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -11,9 +13,9 @@ from bank.models import BankAccount
 @shared_task
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
-        1: get_balance_otk,
-        2: get_balance_alfa,
-        3: get_balance_modul,
+        # 1: get_balance_otk,
+        # 2: get_balance_alfa,
+        # 3: get_balance_modul,
         4: get_balance_raif
     }
     method = methods.get(bank_id)
@@ -25,14 +27,14 @@ def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
         get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    directors = Director.objects.all()
-    for dir in directors:
-        get_balance_alfa.delay(dir.pk)
+    # directors = Director.objects.all()
+    # for dir in directors:
+    #     get_balance_alfa.delay(dir.pk)
 
 
 def get_balance_otk(account, login=None, password=None):
     """ОК"""
-    print('Запрос в банк ОТК')
+    print(f'Запрос в банк ОТК {account}')
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     browser = webdriver.Chrome(options=options,
@@ -47,10 +49,10 @@ def get_balance_otk(account, login=None, password=None):
     c = browser.find_element_by_xpath('//*[@id="root"]/div[4]/main/div/div[2]/div/div/div/span').text
     bal = float(c.split("₽")[0].replace(" ", "").replace(',', '.'))
     browser.close()
-    BankAccount.objects.filter(pk=account).update(balance=bal)
+    BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
 
 
-@shared_task
+# @shared_task
 def get_balance_alfa(name_director):
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
     if accounts:
@@ -86,12 +88,13 @@ def get_balance_alfa(name_director):
         for bal in dict_firm.items():
             if bal[0] in list:
                 BankAccount.objects.filter(company__name=bal[0], bank_id=2).update(
-                    balance=bal[1].split("R")[0].replace(",", ".").replace(" ", "")
+                    balance=bal[1].split("R")[0].replace(",", ".").replace(" ", ""),
+                    date_updated=timezone.now()
                 )
 
 
 def get_balance_modul(account, login=None, password=None):
-    print('Запрос в банк MODUL')
+    print(f'Запрос в банк MODUL {account}')
     url = "https://api.modulbank.ru/v1/account-info"
     headers = {
         "Host": "api.modulbank.ru",
@@ -102,13 +105,12 @@ def get_balance_modul(account, login=None, password=None):
     balance = 0
     for i in response[0]['bankAccounts']:
         balance + float(i["balance"])
-    BankAccount.objects.filter(pk=account).update(balance=balance)
-    print(login, '|', password)
+    BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
 
 
 def get_balance_raif(account, login=None, password=None):
     try:
-        print('Запрос в банк Raf')
+        print(f'Запрос в банк Raf {account}')
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         browser = webdriver.Chrome(options=options,
@@ -125,6 +127,6 @@ def get_balance_raif(account, login=None, password=None):
         bal = browser.find_element_by_css_selector(".b-home-container__accounts-list-item-balance").text
         balance = float(bal.split('₽')[0].replace(" ", ""))
         browser.close()
-        BankAccount.objects.filter(pk=account).update(balance=balance)
-    except:
-        print(Exception)
+        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
+    except Exception as e:
+        print(e)

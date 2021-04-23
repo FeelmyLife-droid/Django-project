@@ -20,12 +20,11 @@ class BankAccount(models.Model):
     login_bank = models.CharField(max_length=255, verbose_name='Логин', null=False)
     password_bank = models.CharField(max_length=255, verbose_name='Пароль', null=False)
 
-    date_created = models.DateTimeField(default=timezone.now)
-    date_updated = models.DateTimeField(default=timezone.now)
+    date_created = models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now_add=True)
     balance = models.DecimalField(max_digits=15, decimal_places=2, blank=True, null=True)
 
     def update(self, *args, **kwargs):
-        kwargs.update({'updated': timezone.now})
         super().update(*args, **kwargs)
         return self
 
