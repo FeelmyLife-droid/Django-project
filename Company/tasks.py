@@ -1,6 +1,4 @@
 import time
-from random import randint
-
 import httpx
 from celery import shared_task
 from selenium import webdriver
@@ -32,12 +30,13 @@ def update_balance():
         get_balance_alfa.delay(dir.pk)
 
 
-def get_balance_otk(account=4, login=None, password=None):
+def get_balance_otk(account, login=None, password=None):
     """ОК"""
     print('Запрос в банк ОТК')
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
-    browser = webdriver.Chrome(options=options, executable_path='chromedriver')
+    browser = webdriver.Chrome(options=options,
+                               executable_path='/Users/qeqe/Desktop/Работа/siteDjango/mysite/chromedriver')
     browser.get('https://internetbankmb.open.ru/login')
     browser.find_element_by_name('username').send_keys(str(login))
     browser.find_element_by_name('password').send_keys(str(password))
@@ -46,7 +45,7 @@ def get_balance_otk(account=4, login=None, password=None):
     browser.get('https://internetbankmb.open.ru/app/cards')
     time.sleep(10)
     c = browser.find_element_by_xpath('//*[@id="root"]/div[4]/main/div/div[2]/div/div/div/span').text
-    bal = float(c.split()[0].replace(',', '.'))
+    bal = float(c.split("₽")[0].replace(" ", "").replace(',', '.'))
     browser.close()
     BankAccount.objects.filter(pk=account).update(balance=bal)
 
@@ -108,22 +107,24 @@ def get_balance_modul(account, login=None, password=None):
 
 
 def get_balance_raif(account, login=None, password=None):
-    print('Запрос в банк Raf')
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    browser = webdriver.Chrome(options=options,
-                               executable_path='/Users/qeqe/Desktop/Работа/siteDjango/mysite/chromedriver')
-    browser.get('https://sso.rbo.raiffeisen.ru/signin')
-    time.sleep(3)
-    browser.find_element_by_xpath("//a[@href='https://www.rbo.raiffeisen.ru']").click()
-    time.sleep(3)
-    browser.find_element_by_name('login').send_keys(str(login))
-    browser.find_element_by_name('password').send_keys(str(password))
-    browser.find_element_by_css_selector(".form__button").click()
+    try:
+        print('Запрос в банк Raf')
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        browser = webdriver.Chrome(options=options,
+                                   executable_path='/Users/qeqe/Desktop/Работа/siteDjango/mysite/chromedriver')
+        browser.get('https://sso.rbo.raiffeisen.ru/signin')
+        time.sleep(3)
+        browser.find_element_by_xpath("//a[@href='https://www.rbo.raiffeisen.ru']").click()
+        time.sleep(3)
+        browser.find_element_by_name('login').send_keys(str(login))
+        browser.find_element_by_name('password').send_keys(str(password))
+        browser.find_element_by_css_selector(".form__button").click()
 
-    time.sleep(10)
-    bal = browser.find_element_by_css_selector(".b-home-container__accounts-list-item-balance").text
-    balance = float(bal.split('₽')[0])
-    browser.close()
-    BankAccount.objects.filter(pk=account).update(balance=balance)
-
+        time.sleep(15)
+        bal = browser.find_element_by_css_selector(".b-home-container__accounts-list-item-balance").text
+        balance = float(bal.split('₽')[0].replace(" ", ""))
+        browser.close()
+        BankAccount.objects.filter(pk=account).update(balance=balance)
+    except:
+        print(Exception)

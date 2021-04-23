@@ -1,0 +1,2979 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-02-26T11:49:52.768Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Director object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-02-26T12:02:13.088Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "цццццццццццц",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-02-26T12:02:38.927Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "уууууууууу",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2021-02-26T13:07:13.072Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Алексеев Игорь Александрович",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u0418\\u041e\", \"\\u0418\\u041d\\u041d\", \"\\u0414\\u0430\\u0442\\u0430 \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\", \"\\u041c\\u0435\\u0441\\u0442\\u043e \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\", \"\\u041d\\u043e\\u043c\\u0435\\u0440 \\u043f\\u0430\\u0441\\u043f\\u043e\\u0440\\u0442\\u0430\", \"\\u0414\\u0430\\u0442\\u0430 \\u0432\\u044b\\u0434\\u0430\\u0447\\u0438\", \"\\u041a\\u0435\\u043c \\u0432\\u044b\\u0434\\u0430\\u043d\", \"\\u041a\\u043e\\u0434 \\u043f\\u043e\\u0434\\u0440\\u0430\\u0437\\u0434\\u0435\\u043b\\u0435\\u043d\\u0438\\u044f\", \"\\u0423\\u043b\\u0438\\u0446\\u0430\", \"\\u0414\\u043e\\u043c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2021-02-26T13:08:06.791Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Ананян Мартун Ашотович",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u0418\\u041e\", \"\\u0418\\u041d\\u041d\", \"\\u0414\\u0430\\u0442\\u0430 \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\", \"\\u041c\\u0435\\u0441\\u0442\\u043e \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\", \"\\u041d\\u043e\\u043c\\u0435\\u0440 \\u043f\\u0430\\u0441\\u043f\\u043e\\u0440\\u0442\\u0430\", \"\\u0414\\u0430\\u0442\\u0430 \\u0432\\u044b\\u0434\\u0430\\u0447\\u0438\", \"\\u041a\\u0435\\u043c \\u0432\\u044b\\u0434\\u0430\\u043d\", \"\\u041a\\u043e\\u0434 \\u043f\\u043e\\u0434\\u0440\\u0430\\u0437\\u0434\\u0435\\u043b\\u0435\\u043d\\u0438\\u044f\", \"\\u0423\\u043b\\u0438\\u0446\\u0430\", \"\\u0414\\u043e\\u043c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2021-02-26T13:09:14.310Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Безус Анастасия Викторовна",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u0418\\u041e\", \"\\u0418\\u041d\\u041d\", \"\\u0414\\u0430\\u0442\\u0430 \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\", \"\\u041c\\u0435\\u0441\\u0442\\u043e \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\", \"\\u041d\\u043e\\u043c\\u0435\\u0440 \\u043f\\u0430\\u0441\\u043f\\u043e\\u0440\\u0442\\u0430\", \"\\u0414\\u0430\\u0442\\u0430 \\u0432\\u044b\\u0434\\u0430\\u0447\\u0438\", \"\\u041a\\u0435\\u043c \\u0432\\u044b\\u0434\\u0430\\u043d\", \"\\u041a\\u043e\\u0434 \\u043f\\u043e\\u0434\\u0440\\u0430\\u0437\\u0434\\u0435\\u043b\\u0435\\u043d\\u0438\\u044f\", \"\\u0423\\u043b\\u0438\\u0446\\u0430\", \"\\u0414\\u043e\\u043c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2021-03-02T11:08:14.273Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Company object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2021-03-02T11:14:51.339Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Company object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2021-03-02T11:15:41.226Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Company object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2021-03-02T11:43:05.210Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"Спецпоставка\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2021-03-04T07:53:22.827Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2021-03-04T07:57:18.135Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "324>234>234>3",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2021-03-04T12:00:11.932Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2021-03-04T12:00:22.090Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Модуль-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2021-03-04T18:25:42.222Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "ООО \"Экопродукт\"|Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2021-03-10T13:03:40.406Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "ООО \"Экопродукт\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2021-03-10T19:54:21.272Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2021-03-10T19:54:29.113Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2021-03-10T19:54:44.138Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Модуль-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2021-03-10T19:56:03.280Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "7",
+    "object_repr": "ООО \"Гринлайн\"|Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2021-03-10T19:56:08.253Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"Гринлайн\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2021-03-10T19:56:18.024Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "ООО \"Гринлайн\"|Модуль-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2021-03-10T20:50:55.533Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2021-03-12T07:13:36.903Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2021-03-12T12:33:32.504Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u043e\\u043a\\u0435\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2021-03-12T13:25:42.328Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "7",
+    "object_repr": "ООО \"Гринлайн\"|Открытие",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2021-03-14T19:48:48.297Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0422\\u043e\\u043a\\u0435\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2021-03-15T13:23:45.018Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2021-03-15T13:43:23.023Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Модуль-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2021-03-15T13:54:21.681Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"Гринлайн\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2021-03-15T13:54:28.109Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "ООО \"Гринлайн\"|Модуль-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2021-03-15T16:11:17.298Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2021-03-15T19:05:16.397Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "ООО \"Гринлайн\"|Модуль-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2021-03-15T19:05:24.296Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"Гринлайн\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2021-03-15T19:05:34.498Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Модуль-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2021-03-15T19:05:40.379Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2021-03-16T07:12:45.575Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2021-03-16T07:12:51.143Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"Гринлайн\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2021-03-16T07:12:58.279Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Модуль-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2021-03-16T07:13:03.479Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "ООО \"Гринлайн\"|Модуль-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2021-03-16T12:41:11.882Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "fghwtehw",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2021-03-16T14:29:03.561Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Алексеев Игорь Александрович",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0430\\u0442\\u0430 \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2021-03-25T07:42:44.236Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2021-03-26T11:47:25.168Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"Спецпоставка\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2021-03-26T11:47:32.058Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "ООО \"ШАХ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2021-03-26T11:49:55.181Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "ООО \"ШАХ\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2021-03-26T11:50:14.062Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "11",
+    "object_repr": "ООО \"Спецпоставка\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2021-03-26T12:00:27.617Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "ООО \"ШАХ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2021-03-26T12:00:34.296Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"Спецпоставка\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2021-03-29T07:35:39.174Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2021-03-29T07:48:09.941Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2021-03-29T08:01:48.685Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "ООО \"АНТЕЙ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0444\\u0438\\u0440\\u043c\\u044b\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2021-03-29T08:01:59.800Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"РИАНА\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0444\\u0438\\u0440\\u043c\\u044b\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2021-03-29T08:02:21.187Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0444\\u0438\\u0440\\u043c\\u044b\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2021-03-29T09:19:09.733Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2021-03-29T09:19:18.645Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2021-03-29T09:20:22.446Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2021-03-29T09:20:35.126Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2021-03-29T09:26:05.189Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2021-03-29T09:26:21.893Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2021-03-29T09:26:27.745Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2021-04-06T09:05:00.104Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2021-04-06T09:14:16.342Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2021-04-06T09:18:40.606Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2021-04-06T09:28:33.049Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2021-04-06T09:29:49.255Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2021-04-06T09:30:21.000Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2021-04-06T09:30:46.311Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2021-04-06T09:31:11.544Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2021-04-06T09:31:17.644Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2021-04-06T09:32:11.869Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"РИАНА\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043d\\u0430 \\u043b\\u0430\\u0442\\u0438\\u043d\\u0438\\u0446\\u0435\", \"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2021-04-06T09:35:01.982Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "ООО \"АНТЕЙ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043d\\u0430 \\u043b\\u0430\\u0442\\u0438\\u043d\\u0438\\u0446\\u0435\", \"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2021-04-06T09:35:13.817Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043d\\u0430 \\u043b\\u0430\\u0442\\u0438\\u043d\\u0438\\u0446\\u0435\", \"Email\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2021-04-06T10:43:08.311Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Безус Анастасия Викторовна",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0430\\u0442\\u0430 \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2021-04-06T10:43:24.272Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Ананян Мартун Ашотович",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0430\\u0442\\u0430 \\u0440\\u043e\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2021-04-08T09:31:44.521Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2021-04-08T10:00:00.510Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2021-04-08T10:00:27.335Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "ООО \"АНТЕЙ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2021-04-08T10:03:53.351Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2021-04-08T10:04:01.741Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2021-04-08T10:04:07.065Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2021-04-08T10:04:12.842Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2021-04-08T10:04:30.146Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "11",
+    "object_repr": "ООО \"РИАНА\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2021-04-08T10:17:04.737Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2021-04-08T10:17:22.084Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2021-04-08T10:24:58.116Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|fghwtehw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2021-04-08T10:25:04.535Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "ООО \"АНТЕЙ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2021-04-08T10:25:24.174Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"РИАНА\"",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2021-04-08T10:25:28.860Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "ООО \"АНТЕЙ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2021-04-08T10:25:33.771Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u0438\\u0440\\u0435\\u043a\\u0442\\u043e\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2021-04-08T11:59:48.313Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "ООО \"АНТЕЙ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2021-04-08T11:59:52.205Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2021-04-08T12:33:06.533Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "ООО \"ОКНО\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2021-04-08T12:35:38.102Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "12",
+    "object_repr": "ООО \"ОКНО\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2021-04-08T12:35:51.189Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2021-04-09T11:45:13.495Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "ООО \"АНТЕЙ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2021-04-09T11:45:19.396Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2021-04-09T12:21:59.160Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "12",
+    "object_repr": "ООО \"ОКНО\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2021-04-09T12:24:11.320Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "ООО \"ПК СТРОЙПОМ\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2021-04-09T12:25:20.183Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "ООО \"ОКНО\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2021-04-09T12:26:16.050Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "ООО \"СПК21\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2021-04-09T12:26:50.480Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|fghwtehw",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2021-04-09T12:26:57.830Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0411\\u0430\\u043d\\u043a\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2021-04-09T12:27:22.939Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041b\\u043e\\u0433\\u0438\\u043d\", \"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2021-04-09T12:27:47.469Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "13",
+    "object_repr": "ООО \"ПК СТРОЙПОМ\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2021-04-09T12:27:58.540Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "9",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|fghwtehw",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2021-04-09T12:28:16.892Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "14",
+    "object_repr": "ООО \"СПК21\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2021-04-09T12:54:04.897Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "13",
+    "object_repr": "ООО \"ПК СТРОЙПОМ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2021-04-09T12:54:13.802Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "14",
+    "object_repr": "ООО \"СПК21\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2021-04-09T12:54:20.179Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2021-04-19T10:54:11.169Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "райффайзен",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0411\\u0430\\u043d\\u043a\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2021-04-19T10:54:23.216Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Райффайзен",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0411\\u0430\\u043d\\u043a\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2021-04-19T10:58:03.395Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "ООО \"РАКЕТА\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2021-04-19T10:58:30.109Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "15",
+    "object_repr": "ООО \"РАКЕТА\"|Райффайзен",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.658Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "15",
+    "object_repr": "ООО \"РАКЕТА\"|Райффайзен",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 116,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.663Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "14",
+    "object_repr": "ООО \"СПК21\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 117,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.666Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "13",
+    "object_repr": "ООО \"ПК СТРОЙПОМ\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 118,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.669Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "11",
+    "object_repr": "ООО \"РИАНА\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 119,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.671Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "10",
+    "object_repr": "ООО \"АНТЕЙ\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 120,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.673Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "8",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 121,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.675Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Альфа-Банк",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 122,
+  "fields": {
+    "action_time": "2021-04-19T11:52:32.677Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"|Открытие",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 123,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.470Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "ООО \"РАКЕТА\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 124,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.472Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "ООО \"СПК21\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 125,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.474Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "ООО \"ПК СТРОЙПОМ\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 126,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.476Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "ООО \"ЭКОПРОДУКТ\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 127,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.479Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "ООО \"РИАНА\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 128,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.481Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "ООО \"АНТЕЙ\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 129,
+  "fields": {
+    "action_time": "2021-04-19T11:52:54.483Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "ООО \"АВТОТРАНС-КАЗАНЬ\"",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 130,
+  "fields": {
+    "action_time": "2021-04-19T11:53:50.058Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "ООО \"РАКЕТА\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 131,
+  "fields": {
+    "action_time": "2021-04-19T11:54:31.233Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "11",
+    "object_repr": "ООО \"Оптовая\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 132,
+  "fields": {
+    "action_time": "2021-04-19T11:55:40.710Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "12",
+    "object_repr": "ООО \"КПТ\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 133,
+  "fields": {
+    "action_time": "2021-04-19T11:56:08.654Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "16",
+    "object_repr": "ООО \"РАКЕТА\"|Райффайзен",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 134,
+  "fields": {
+    "action_time": "2021-04-19T11:56:36.431Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "17",
+    "object_repr": "ООО \"РАКЕТА\"|Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 135,
+  "fields": {
+    "action_time": "2021-04-19T11:56:42.787Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "16",
+    "object_repr": "ООО \"РАКЕТА\"|Райффайзен",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 136,
+  "fields": {
+    "action_time": "2021-04-19T11:57:06.796Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "18",
+    "object_repr": "ООО \"РАКЕТА\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 137,
+  "fields": {
+    "action_time": "2021-04-19T11:57:33.068Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "19",
+    "object_repr": "ООО \"Оптовая\"|Райффайзен",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 138,
+  "fields": {
+    "action_time": "2021-04-19T11:58:04.081Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "20",
+    "object_repr": "ООО \"Оптовая\"|Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 139,
+  "fields": {
+    "action_time": "2021-04-19T11:58:27.063Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "21",
+    "object_repr": "ООО \"Оптовая\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 140,
+  "fields": {
+    "action_time": "2021-04-19T11:59:01.587Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "22",
+    "object_repr": "ООО \"КПТ\"|Райффайзен",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 141,
+  "fields": {
+    "action_time": "2021-04-19T11:59:22.543Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "23",
+    "object_repr": "ООО \"КПТ\"|Открытие",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 142,
+  "fields": {
+    "action_time": "2021-04-19T11:59:57.751Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "24",
+    "object_repr": "ООО \"КПТ\"|Альфа-Банк",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 143,
+  "fields": {
+    "action_time": "2021-04-19T12:44:22.464Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "16",
+    "object_repr": "ООО \"РАКЕТА\"|Райффайзен",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 144,
+  "fields": {
+    "action_time": "2021-04-19T12:44:28.176Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "17",
+    "object_repr": "ООО \"РАКЕТА\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 145,
+  "fields": {
+    "action_time": "2021-04-19T12:44:34.803Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "18",
+    "object_repr": "ООО \"РАКЕТА\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 146,
+  "fields": {
+    "action_time": "2021-04-19T12:44:39.115Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "19",
+    "object_repr": "ООО \"Оптовая\"|Райффайзен",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 147,
+  "fields": {
+    "action_time": "2021-04-19T12:44:43.700Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "20",
+    "object_repr": "ООО \"Оптовая\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 148,
+  "fields": {
+    "action_time": "2021-04-19T12:44:47.851Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "21",
+    "object_repr": "ООО \"Оптовая\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 149,
+  "fields": {
+    "action_time": "2021-04-19T12:44:53.837Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "22",
+    "object_repr": "ООО \"КПТ\"|Райффайзен",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 150,
+  "fields": {
+    "action_time": "2021-04-19T12:44:58.445Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "23",
+    "object_repr": "ООО \"КПТ\"|Открытие",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 151,
+  "fields": {
+    "action_time": "2021-04-19T12:45:03.399Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "24",
+    "object_repr": "ООО \"КПТ\"|Альфа-Банк",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Balance\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 152,
+  "fields": {
+    "action_time": "2021-04-19T13:05:43.192Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "11",
+    "object_repr": "ООО \"ОПТОВАЯТОРГОВЛЯ\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0444\\u0438\\u0440\\u043c\\u044b\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add director",
+    "content_type": 7,
+    "codename": "add_director"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change director",
+    "content_type": 7,
+    "codename": "change_director"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete director",
+    "content_type": 7,
+    "codename": "delete_director"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view director",
+    "content_type": 7,
+    "codename": "view_director"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add company",
+    "content_type": 8,
+    "codename": "add_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change company",
+    "content_type": 8,
+    "codename": "change_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete company",
+    "content_type": 8,
+    "codename": "delete_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view company",
+    "content_type": 8,
+    "codename": "view_company"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add bank",
+    "content_type": 9,
+    "codename": "add_bank"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change bank",
+    "content_type": 9,
+    "codename": "change_bank"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete bank",
+    "content_type": 9,
+    "codename": "delete_bank"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view bank",
+    "content_type": 9,
+    "codename": "view_bank"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add bank account",
+    "content_type": 10,
+    "codename": "add_bankaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change bank account",
+    "content_type": 10,
+    "codename": "change_bankaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete bank account",
+    "content_type": 10,
+    "codename": "delete_bankaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view bank account",
+    "content_type": 10,
+    "codename": "view_bankaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add crontab",
+    "content_type": 11,
+    "codename": "add_crontabschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change crontab",
+    "content_type": 11,
+    "codename": "change_crontabschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete crontab",
+    "content_type": 11,
+    "codename": "delete_crontabschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view crontab",
+    "content_type": 11,
+    "codename": "view_crontabschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add interval",
+    "content_type": 12,
+    "codename": "add_intervalschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change interval",
+    "content_type": 12,
+    "codename": "change_intervalschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete interval",
+    "content_type": 12,
+    "codename": "delete_intervalschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view interval",
+    "content_type": 12,
+    "codename": "view_intervalschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add periodic task",
+    "content_type": 13,
+    "codename": "add_periodictask"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change periodic task",
+    "content_type": 13,
+    "codename": "change_periodictask"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete periodic task",
+    "content_type": 13,
+    "codename": "delete_periodictask"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view periodic task",
+    "content_type": 13,
+    "codename": "view_periodictask"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add periodic tasks",
+    "content_type": 14,
+    "codename": "add_periodictasks"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change periodic tasks",
+    "content_type": 14,
+    "codename": "change_periodictasks"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete periodic tasks",
+    "content_type": 14,
+    "codename": "delete_periodictasks"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view periodic tasks",
+    "content_type": 14,
+    "codename": "view_periodictasks"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add solar event",
+    "content_type": 15,
+    "codename": "add_solarschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change solar event",
+    "content_type": 15,
+    "codename": "change_solarschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete solar event",
+    "content_type": 15,
+    "codename": "delete_solarschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view solar event",
+    "content_type": 15,
+    "codename": "view_solarschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add clocked",
+    "content_type": 16,
+    "codename": "add_clockedschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change clocked",
+    "content_type": 16,
+    "codename": "change_clockedschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete clocked",
+    "content_type": 16,
+    "codename": "delete_clockedschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view clocked",
+    "content_type": 16,
+    "codename": "view_clockedschedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add task result",
+    "content_type": 17,
+    "codename": "add_taskresult"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change task result",
+    "content_type": 17,
+    "codename": "change_taskresult"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete task result",
+    "content_type": 17,
+    "codename": "delete_taskresult"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view task result",
+    "content_type": 17,
+    "codename": "view_taskresult"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add chord counter",
+    "content_type": 18,
+    "codename": "add_chordcounter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change chord counter",
+    "content_type": 18,
+    "codename": "change_chordcounter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete chord counter",
+    "content_type": 18,
+    "codename": "delete_chordcounter"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view chord counter",
+    "content_type": 18,
+    "codename": "view_chordcounter"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$18y44uEdJ32y$rgJc8AzVssKcRf+ggrxLnW597PtdPwSVCBppPk7+yvM=",
+    "last_login": "2021-04-19T10:52:37.837Z",
+    "is_superuser": true,
+    "username": "qeqe",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-02-26T11:47:43.940Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5awulfcer02giwxh9n73cg53quzqilte",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lFbbF:8M-tNSs0Hcvi1Rm_L22vZYKj-JbPcmQpV16i1BxZfNg",
+    "expire_date": "2021-03-12T11:48:01.713Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8e76053mw3ucb4d2gh047p7juhbs3kz1",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lNDv5:3bYFWNLOD5NUZ6_T0uWV56HgiKLKYgqLs2Aje6oume4",
+    "expire_date": "2021-04-02T12:07:59.368Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "a01r55s1m6rwzs4mn86b4i7gp07857nn",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lYRW9:UgewhjteFO7yzFtedCP5HR6i3lrALeSAqhKEO6RP_s0",
+    "expire_date": "2021-05-03T10:52:37.841Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "e10rnwm8s4vnqbiy9jucdba69hyoetfz",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lOxuM:CmEJGSfv3l8uRFdhtxF5ysMp41kyy17m_YLT-DeU1Vg",
+    "expire_date": "2021-04-07T07:26:26.702Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "edn7dkc09npr5in37ep3dx8s2n9fh9sr",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lLWXE:lfvELzr9Dfdagr7GdTOOv-erJAJJpdyEwr0Hk0vqvVc",
+    "expire_date": "2021-03-28T19:36:20.799Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hc4n5zamqvl8plz033djr8fl04lfqbcr",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lH2pf:cs8q9L2J-_F84Gs_xBAedh4WMv0Y1nf4PK-7l81ihiY",
+    "expire_date": "2021-03-16T11:04:51.687Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jo0hdvz88u3ew2pgq3ny2hdor9h7ge55",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lNNaR:4KBxDKzi_jk8H9vxyavvttYbuwfdD5ff1mv_7cxxMG0",
+    "expire_date": "2021-04-02T22:27:19.770Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "m6rymx4qt4kb8scky7i389vyzbdj27qn",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lQkmi:6zgbz3QdctFFacPxTyk2U2lc7nUzS1h--GeTKxR4r3o",
+    "expire_date": "2021-04-12T05:49:56.815Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "pvge5z1bw0ht72mwvitmjr3jcmz2xpm3",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lJyUq:1QW_3x6quSmVUOilYJxGWaIOvdTr_ciPzZ7cp9AI_UQ",
+    "expire_date": "2021-03-24T13:03:28.811Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "syac55foqglwz9fuelvjn5yin0q22qk5",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lTObX:VncTlCMR7Wu81GeTc3N9GS0zaAYrNIIetBhGRyNHrMA",
+    "expire_date": "2021-04-19T12:45:19.008Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vu6119v29y4zajqkmj6x80g1gl9vj3lg",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEO0_Jw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWaKIeVcxhMDkrZwKaYNACWqVTPjuENOagEIDTwGgZrANH2mCErAnF-wPRtTdR:1lLnC1:nPHFsO_n_saM5DjXFqSqfSXEFjcLuVX0O6MRGugt37M",
+    "expire_date": "2021-03-29T13:23:33.448Z"
+  }
+},
+{
+  "model": "Director.director",
+  "pk": 1,
+  "fields": {
+    "name": "Безус Анастасия Викторовна",
+    "inn": "615109423510",
+    "date_of_birth": "2018-09-05",
+    "place_of_birth": "гор. Шахты Ростовской области",
+    "id_passport": "6018378211",
+    "date_of_issue": "05.09.2018",
+    "issued_by": "ГУ МВД России по Ростовской области",
+    "department_сode": "610-048",
+    "street": "г. Новошахтинск ул. Узкокалейная",
+    "house": "д. 53"
+  }
+},
+{
+  "model": "Director.director",
+  "pk": 2,
+  "fields": {
+    "name": "Ананян Мартун Ашотович",
+    "inn": "616611205220",
+    "date_of_birth": "2005-06-03",
+    "place_of_birth": "Гор. Тихорецк Краснодарского края",
+    "id_passport": "6005337484",
+    "date_of_issue": "03.06.2005",
+    "issued_by": "Отделом внутренних дел Первомайского района гор.Ростова-на-дону",
+    "department_сode": "612-052",
+    "street": "г.Ростов-на-Дону пр-кт Шолохова",
+    "house": "дом 266/2 кв.52"
+  }
+},
+{
+  "model": "Director.director",
+  "pk": 3,
+  "fields": {
+    "name": "Алексеев Игорь Александрович",
+    "inn": "615109277700",
+    "date_of_birth": "1989-03-08",
+    "place_of_birth": "гор. Херсон Херсонской обл. Украина",
+    "id_passport": "6015799907",
+    "date_of_issue": "14.09.2015",
+    "issued_by": "отделом УФМС России по Ростовской области в г. Новошахтинске",
+    "department_сode": "610-048",
+    "street": "г. Новошахтинск Ул. Гастелло",
+    "house": "д.40"
+  }
+},
+{
+  "model": "Company.company",
+  "pk": 10,
+  "fields": {
+    "name": "ООО \"РАКЕТА\"",
+    "slug": "raketa",
+    "inn": "1",
+    "okved": "1",
+    "legal_address": "344091, Ростовская обл, Ростов-на-Дону г, 2-я Краснодарская ул, д. 96/2, кв.(оф.) 112",
+    "legal_city": "Ростов-на-Дону",
+    "date_of_application": "02.01.2000",
+    "registration_date": "23v423v",
+    "charter_number": "1",
+    "email": "raketa1@mailtorg.ru",
+    "directors": 1,
+    "bankaccount": null
+  }
+},
+{
+  "model": "Company.company",
+  "pk": 11,
+  "fields": {
+    "name": "ООО \"ОПТОВАЯТОРГОВЛЯ\"",
+    "slug": "optovayatorgovlya",
+    "inn": "2",
+    "okved": "1",
+    "legal_address": "344091, Ростовская обл, Ростов-на-Дону г, 2-я Краснодарская ул, д. 96/2, кв.(оф.) 112",
+    "legal_city": "Ростов-на-Дону",
+    "date_of_application": "02.01.2000",
+    "registration_date": "44324",
+    "charter_number": "12",
+    "email": "optovayatorgovlya2@mailtorg.ru",
+    "directors": 1,
+    "bankaccount": null
+  }
+},
+{
+  "model": "Company.company",
+  "pk": 12,
+  "fields": {
+    "name": "ООО \"КПТ\"",
+    "slug": "kpt",
+    "inn": "3",
+    "okved": "1",
+    "legal_address": "344091, Ростовская обл, Ростов-на-Дону г, 2-я Краснодарская ул, д. 96/2, кв.(оф.) 112",
+    "legal_city": "Ростов-на-Дону",
+    "date_of_application": "02.01.2000",
+    "registration_date": "25.12.2020",
+    "charter_number": "2",
+    "email": "kpt3@mailtorg.ru",
+    "directors": 1,
+    "bankaccount": null
+  }
+},
+{
+  "model": "bank.bank",
+  "pk": 1,
+  "fields": {
+    "name": "Открытие"
+  }
+},
+{
+  "model": "bank.bank",
+  "pk": 2,
+  "fields": {
+    "name": "Альфа-Банк"
+  }
+},
+{
+  "model": "bank.bank",
+  "pk": 3,
+  "fields": {
+    "name": "Модуль-Банк"
+  }
+},
+{
+  "model": "bank.bank",
+  "pk": 4,
+  "fields": {
+    "name": "Райффайзен"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 16,
+  "fields": {
+    "company": 10,
+    "bank": 4,
+    "login_bank": "raketa89",
+    "password_bank": "ASDzxc123qwe",
+    "date_created": "2021-04-19T11:55:46Z",
+    "date_updated": "2021-04-19T11:55:46Z",
+    "balance": "657.10"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 17,
+  "fields": {
+    "company": 10,
+    "bank": 1,
+    "login_bank": "raketa",
+    "password_bank": "!@#123QWEasdzxc",
+    "date_created": "2021-04-19T11:56:10Z",
+    "date_updated": "2021-04-19T11:56:10Z",
+    "balance": "33.59"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 18,
+  "fields": {
+    "company": 10,
+    "bank": 2,
+    "login_bank": "KPT67@mailtorg.ru",
+    "password_bank": "ASDzxc123qwe",
+    "date_created": "2021-04-19T11:56:46Z",
+    "date_updated": "2021-04-19T11:56:46Z",
+    "balance": "562.05"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 19,
+  "fields": {
+    "company": 11,
+    "bank": 4,
+    "login_bank": "Optovaya",
+    "password_bank": "ASDzxc123qwe",
+    "date_created": "2021-04-19T11:57:13Z",
+    "date_updated": "2021-04-19T11:57:13Z",
+    "balance": "0.00"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 20,
+  "fields": {
+    "company": 11,
+    "bank": 1,
+    "login_bank": "optovay",
+    "password_bank": "!@#123QWEasdzxc",
+    "date_created": "2021-04-19T11:57:35Z",
+    "date_updated": "2021-04-19T11:57:35Z",
+    "balance": "3957.00"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 21,
+  "fields": {
+    "company": 11,
+    "bank": 2,
+    "login_bank": "KPT67@mailtorg.ru",
+    "password_bank": "ASDzxc123qwe",
+    "date_created": "2021-04-19T11:58:07Z",
+    "date_updated": "2021-04-19T11:58:07Z",
+    "balance": "564.00"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 22,
+  "fields": {
+    "company": 12,
+    "bank": 4,
+    "login_bank": "kpt67",
+    "password_bank": "ASDzxc123qwe",
+    "date_created": "2021-04-19T11:58:45Z",
+    "date_updated": "2021-04-19T11:58:45Z",
+    "balance": "26944.74"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 23,
+  "fields": {
+    "company": 12,
+    "bank": 1,
+    "login_bank": "KPT8923",
+    "password_bank": "!@#123QWEasdzxc",
+    "date_created": "2021-04-19T11:59:03Z",
+    "date_updated": "2021-04-19T11:59:03Z",
+    "balance": "848.45"
+  }
+},
+{
+  "model": "bank.bankaccount",
+  "pk": 24,
+  "fields": {
+    "company": 12,
+    "bank": 2,
+    "login_bank": "KPT67@mailtorg.ru",
+    "password_bank": "ASDzxc123qwe",
+    "date_created": "2021-04-19T11:59:28Z",
+    "date_updated": "2021-04-19T11:59:28Z",
+    "balance": "0.00"
+  }
+}
+]

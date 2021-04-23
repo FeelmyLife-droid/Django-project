@@ -32,7 +32,7 @@ DATE_INPUT_FORMATS = ['%d-%m-%Y']
 CELERY_TIMEZONE = "Europe/Moscow"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://192.168.0.107:6379/0'
 
 # Application definition
 
@@ -86,8 +86,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_django',
+        'USER': 'dickdikins',
+        'PASSWORD': '5ksoxt}B@c',
+        'HOST': '89.108.70.74',
+        'PORT': '5432',
     }
 }
 
@@ -129,4 +133,4 @@ STATIC_URL = '/static/'
 
 STATIC_DIR = BASE_DIR / 'static'
 
-STATICFILES_DIRS = [STATIC_DIR,]
+STATICFILES_DIRS = [STATIC_DIR, ]
