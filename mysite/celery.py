@@ -12,6 +12,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'update_balance': {
         'task': 'Company.tasks.update_balance',
-        'schedule': 1800
+        'schedule': 300
     },
 }
