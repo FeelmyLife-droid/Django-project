@@ -16,12 +16,17 @@ Django==3.1.7
 django-celery-beat==2.2.0
 django-celery-results==2.0.1
 django-timezone-field==4.1.1
+et-xmlfile==1.0.1
 h11==0.12.0
 httpcore==0.12.3
 httpx==0.17.0
 idna==2.10
 kombu==5.0.2
+loguru==0.5.3
 multidict==5.1.0
+numpy==1.20.2
+openpyxl==3.0.7
+pandas==1.2.4
 peewee==3.14.4
 prompt-toolkit==3.0.16
 psycopg2-binary==2.8.6
@@ -41,4 +46,5 @@ typing-extensions==3.7.4.3
 urllib3==1.26.4
 vine==5.0.0
 wcwidth==0.2.5
+xlrd==1.2.0
 yarl==1.6.3
