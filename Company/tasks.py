@@ -116,6 +116,30 @@ def get_balance_modul(account, login=None, password=None):
     BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
 
 
+def get_balance_modul(account=None, login=None, password=None):
+    print(f'Запрос в банк MODUL {account}')
+    url = "https://api.modulbank.ru/v1/account-info"
+    headers = {
+        "Host": "api.modulbank.ru",
+        "Content-Type": "application/json",
+        "Authorization": f'Bearer {login}'
+    }
+    response = httpx.post(url=url, headers=headers).json()
+    a = {}
+    for i in response:
+        a[f"ООО {i['companyName'].split(' ')[-1]}"] = {k['accountName']: k['balance'] for k in i['bankAccounts']}
+    for i in a.items():
+        company = i[0]
+        balance: int = 0
+        for k in i[1].values():
+            balance += k
+        BankAccount.objects.filter(company__name__iexact=company).update(
+            balance=balance,
+            date_updated=timezone.now()
+        )
+        print(balance)
+
+
 def get_balance_raif(account, login=None, password=None):
     url = "https://sso.rbo.raiffeisen.ru/signin"
     options = webdriver.ChromeOptions()
