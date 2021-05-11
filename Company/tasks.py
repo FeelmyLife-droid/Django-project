@@ -15,9 +15,9 @@ from bank.models import BankAccount
 @shared_task
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
-        # 1: get_balance_otk,
-        # 2: get_balance_alfa,
-        # 3: get_balance_modul,
+        1: get_balance_otk,
+        2: get_balance_alfa,
+        3: get_balance_modul,
         4: get_balance_raif
     }
     method = methods.get(bank_id)
@@ -29,9 +29,9 @@ def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
         get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    # directors = Director.objects.all()
-    # for dir in directors:
-    #     get_balance_alfa.delay(dir.pk)
+    directors = Director.objects.all()
+    for dir in directors:
+        get_balance_alfa.delay(dir.pk)
 
 
 def get_balance_otk(account, login=None, password=None):
@@ -65,7 +65,7 @@ def get_balance_alfa(name_director):
     if accounts:
         login, password = accounts[0].login_bank, accounts[0].password_bank
         print(f'Запрос в банк ALFA: {login}')
-        url = "https://link.alfabank.ru/webclient/pages"
+        url = "https://business.auth.alfabank.ru/passport/cerberus-mini-blue/dashboard-blue/corp-username?response_type=code&client_id=corp-albo&scope=openid%20corp-albo&acr_values=corp-username&non_authorized_user=true"
         url1 = 'https://link.alfabank.ru/shared/albo/dashboard'
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
@@ -73,13 +73,15 @@ def get_balance_alfa(name_director):
                               command_executor='http://127.0.0.1:4444/wd/hub') as browser:
             browser.get(url)
             WebDriverWait(browser, 10).until(
-                EC.presence_of_element_located((By.NAME, 'WELCOME_bound_mainPanel_loginPanel_login'))).send_keys(
-                str(login))
+                EC.presence_of_element_located((By.NAME, 'username'))).send_keys(str(login))
+            button = WebDriverWait(browser, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '//*[@id="login-submit"]')))
+            browser.execute_script("arguments[0].click();", button)
             WebDriverWait(browser, 10).until(
-                EC.presence_of_element_located((By.NAME, 'WELCOME_bound_mainPanel_loginPanel_password'))).send_keys(
-                str(password))
-            WebDriverWait(browser, 10).until(
-                EC.presence_of_element_located((By.XPATH, '//*[@id="isc_1P"]/table/tbody/tr/td'))).click()
+                EC.presence_of_element_located((By.NAME, 'password'))).send_keys(str(password))
+            button = WebDriverWait(browser, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '//*[@id="password-submit"]')))
+            browser.execute_script("arguments[0].click();", button)
             time.sleep(10)
             browser.get(url1)
             tr = WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.ID, 'isc_4Q'))).text
@@ -134,4 +136,3 @@ def get_balance_raif(account, login=None, password=None):
         balance = float(c.split("₽")[0].replace(" ", ""))
         print(balance)
         BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
-
