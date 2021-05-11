@@ -101,21 +101,6 @@ def get_balance_alfa(name_director):
                 )
 
 
-def get_balance_modul(account, login=None, password=None):
-    print(f'Запрос в банк MODUL {account}')
-    url = "https://api.modulbank.ru/v1/account-info"
-    headers = {
-        "Host": "api.modulbank.ru",
-        "Content-Type": "application/json",
-        "Authorization": f'Bearer {login}'
-    }
-    response = httpx.post(url=url, headers=headers).json()
-    balance = 0
-    for i in response[0]['bankAccounts']:
-        balance + float(i["balance"])
-    BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
-
-
 def get_balance_modul(account=None, login=None, password=None):
     print(f'Запрос в банк MODUL {account}')
     url = "https://api.modulbank.ru/v1/account-info"
@@ -133,7 +118,7 @@ def get_balance_modul(account=None, login=None, password=None):
         balance: int = 0
         for k in i[1].values():
             balance += k
-        BankAccount.objects.filter(company__name__iexact=company).update(
+        BankAccount.objects.filter(company__name__iexact=company, bank_id=3).update(
             balance=balance,
             date_updated=timezone.now()
         )
