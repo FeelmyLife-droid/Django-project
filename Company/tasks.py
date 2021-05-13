@@ -16,9 +16,9 @@ from bank.models import BankAccount
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
         1: get_balance_otk,
-        2: get_balance_alfa,
-        3: get_balance_modul,
-        4: get_balance_raif
+        # 2: get_balance_alfa,
+        # 3: get_balance_modul,
+        # 4: get_balance_raif
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -29,12 +29,12 @@ def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
         get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    directors = Director.objects.all()
-    for dir in directors:
-        get_balance_alfa.delay(dir.pk)
+    # directors = Director.objects.all()
+    # for dir in directors:
+    #     get_balance_alfa.delay(dir.pk)
 
 
-def get_balance_otk(account, login=None, password=None):
+def get_balance_otk(account=None, login=None, password=None):
     """ОК"""
     print(f'Запрос в банк ОТК {account}')
     url = "https://internetbankmb.open.ru/login"
@@ -49,16 +49,29 @@ def get_balance_otk(account, login=None, password=None):
             EC.presence_of_element_located((By.NAME, 'password'))).send_keys(str(password))
         WebDriverWait(browser, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '[type=submit]'))).click()
-        time.sleep(5)
+        bank_account = WebDriverWait(browser, 10).until(
+            EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[3]/span'))
+        ).text.split("₽")[0].replace(" ", "").replace(',', '.')
+        time.sleep(3)
         browser.get('https://internetbankmb.open.ru/app/cards')
-        c = WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div[4]/main/div/div[2]/div/div/div/span'))).text
-    bal = float(c.split("₽")[0].replace(" ", "").replace(',', '.'))
+        card = 0
+        try:
+            c = WebDriverWait(browser, 10).until(
+                EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div[4]/main/div/div[2]/div'))).text
+            for i in c.split("₽"):
+                try:
+                    card += float(i.split("\n")[-1].replace(',', '.').replace(" ", ""))
+                except:
+                    pass
+        except:
+            card = 0
+    bal = float("{:.2f}".format(float(bank_account) + float(card)))
     print(bal)
     BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
 
 
-@shared_task
+# @shared_task
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)

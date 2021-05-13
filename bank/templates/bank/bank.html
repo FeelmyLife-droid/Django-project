@@ -1,30 +1,32 @@
 {% extends "home.html" %}
 {% block title %} Банки {% endblock title %}
 {% block header %} Список Банков {% endblock header %}
-
+{% load filter %}
 
 {% block content %}
-<form action="{% url 'bank:bank' %}" method="GET">
+<form action="{% url 'bank:bank' %}" method="GET" xmlns="http://www.w3.org/1999/html">
     {% csrf_token %}
     <input type="submit" class="btn btn-success" value="Общий баланс :{{balance.balance|floatformat:'-2'}} рублей">
 </form>
-<div class="col-md-4 my-2">
-    <table class="table table-striped">
+<div class="col-md-12 my-2">
+    <table class="table table-bordered">
         <tr>
-            <th>Название банка</th>
-            <th>Баланс</th>
-            <th>Дата обновления</th>
+            {% for object in object_list %}
+                <td><a class="nav-link" href="#">{{object.bank__name}}</a></td>
+                <td>{{object.total|floatformat:"-2"}}</td>
+                <td>{{object.date_updated}}</td>
+                <tr>
+                    {% for bank in bankAccounts %}
+                        {% if bank.bank.id == object.bank__id %}
+                            <td>{{bank.company.name|split:" "}}<br><br><b>{{bank.balance}}</b> </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
         </tr>
-        {% for object in object_list %}
-        <tr>
-            <td><a class="nav-link" href="#">{{object.bank__name}}</a></td>
-            <td>{{object.total|floatformat:"-2"}}</td>
-            <td>{{object.date_updated}}</td>
-
-        </tr>
-
         {% endfor %}
     </table>
+
 </div>
+
 
 {% endblock content %}

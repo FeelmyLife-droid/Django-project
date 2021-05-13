@@ -8,7 +8,7 @@ class BankAdmin(admin.ModelAdmin):
 
 
 class BankAccountAdmin(admin.ModelAdmin):
-    list_display = ('company', 'bank', 'date_created', 'date_updated', 'balance')
+    list_display = ('company', 'bank', 'date_created','date_updated', 'balance')
 
 
 admin.site.register(Bank, BankAdmin)

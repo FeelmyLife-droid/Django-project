@@ -34,3 +34,4 @@ class BankAccount(models.Model):
     class Meta:
         verbose_name = 'Аккаунт'
         verbose_name_plural = 'Аккаунты'
+        ordering = ["bank_id"]

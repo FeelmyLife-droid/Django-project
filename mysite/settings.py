@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'webhooks',
     'django_celery_beat',
     'django_celery_results',
+    'templatetags.filter',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'filter': 'templatetags.filter',
+            }
         },
     },
 ]
