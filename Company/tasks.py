@@ -16,9 +16,9 @@ from bank.models import BankAccount
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
         1: get_balance_otk,
-        # 2: get_balance_alfa,
-        # 3: get_balance_modul,
-        # 4: get_balance_raif
+        2: get_balance_alfa,
+        3: get_balance_modul,
+        4: get_balance_raif
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -29,9 +29,9 @@ def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
         get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    # directors = Director.objects.all()
-    # for dir in directors:
-    #     get_balance_alfa.delay(dir.pk)
+    directors = Director.objects.all()
+    for dir in directors:
+        get_balance_alfa.delay(dir.pk)
 
 
 def get_balance_otk(account=None, login=None, password=None):
@@ -71,7 +71,7 @@ def get_balance_otk(account=None, login=None, password=None):
     BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
 
 
-# @shared_task
+@shared_task
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
