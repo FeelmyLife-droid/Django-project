@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+{% block title %} Банки | *Добавить* {% endblock title %}
+{% block header %} Добавление аккаунта {% endblock header %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <form class="form-group" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="{% url 'company:add_company' %}" role="button">Добавить фирму</a>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="{% url 'bank:bank' %}" role="button">Назад</a>
+    </div>
+</div>
+{% endblock %}

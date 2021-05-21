@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% block title %} Directors {% endblock title %}
+{% block header %} Добавление директора {% endblock header %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <form class="form-group" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-primary" type="submit" value="Save">
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1">
+        <a class="btn btn-primary" href="{% url 'company:add_company' %}" role="button">Назад</a>
+    </div>
+</div>
+
+{% endblock content %}
+

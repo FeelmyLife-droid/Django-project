@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+{% block title %} Компании {% endblock title %}
+{% block header %} Список фирм {% endblock header %}
+
+
+{% block content %}
+<div class="row">
+
+</div>
+<div class="row">
+    <div class="col-md-10 mx-auto my-2">
+        <table class="table table-striped">
+            <tr>
+                <th>Название банка</th>
+                <th>Название фирмы</th>
+                <th>Баланс</th>
+                <th>Дата создания</th>
+                <th>Дата обновления</th>
+                <th>Логин</th>
+                <th>Пароль</th>
+            </tr>
+            {% for object in object_list %}
+            <tr>
+                <td>{{object.bank.name}}</td>
+                <td>{{object.company.name}}</td>
+                <td><b>{{object.balance}}</b></td>
+                <td>{{object.date_created}}</td>
+
+                    <td>{{object.date_updated | timesince}}</td>
+
+                <td>{{object.login_bank |truncatechars:30}}</td>
+                <td>{{object.password_bank}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock content %}

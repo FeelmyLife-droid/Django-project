@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     'templatetags.filter',
-    'django_tables2',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

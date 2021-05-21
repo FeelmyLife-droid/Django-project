@@ -4,7 +4,8 @@
 
 
 {% block content %}
-<div class="col-md-10 mx-auto my-2">
+<div class="row">
+    <div class="col-md-12 mx-auto my-2">
     <table class="table table-striped">
         <tr>
             <th>ФИО</th>
@@ -33,5 +34,10 @@
         </tr>
         {% endfor %}
     </table>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="{% url 'directors:add_directors' %}" role="button">Добавить</a>
+    </div>
 </div>
 {% endblock content %}

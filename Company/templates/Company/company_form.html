@@ -1,15 +1,22 @@
 {% extends "home.html" %}
 {% block title %} Directors {% endblock title %}
-{% block header %} Список директоров {% endblock header %}
+{% block header %} Форма добавления фирмы {% endblock header %}
 
 
 {% block content %}
-
-<form class="form-group" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
-
-
+<div class="row">
+    <form class="form-group" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Save">
+    </form>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <a class="btn btn-primary" href="{% url 'directors:add_directors' %}" role="button">Добавить директора</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary" href="{% url 'bank:bank_add' %}" role="button">Назад</a>
+    </div>
+</div>
 {% endblock content %}
 

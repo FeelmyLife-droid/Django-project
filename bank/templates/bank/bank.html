@@ -1,40 +1,78 @@
 {% extends "home.html" %}
 {% block title %} Банки {% endblock title %}
 {% block header %} Список Банков {% endblock header %}
-{% load filter %}
+{% load humanize %}
+
 
 {% block content %}
-<form action="{% url 'bank:bank' %}" method="GET">
-    {% csrf_token %}
-    <input type="submit" class="btn btn-success" value="Общий баланс :{{balance.balance|floatformat:'-2'}} рублей">
-</form>
-<div class="col-md-12">
-    <div class="row">
+<div class="row">
+    <div class="col-md-3">
+        <form action="{% url 'bank:bank' %}" method="GET">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-success"
+                   value="Общий баланс :   {{balance.balance|intcomma}} рублей">
+        </form>
+    </div>
+    <div class="col-md-7">
+
+    </div>
+    <div class="col-md-2">
+        <h6 data-tooltip title="{% for error in date_error %}{{error}}{%endfor%}"><b>{{balance.date_updated|naturaltime}}</b></h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 my-2">
+        <table class="col-md-12">
+            <tr>
+                {% for i in all_balance %}
+                <th>{{i.bank__name}}: <span style="color: forestgreen">{{i.total|intcomma}}</span></th>
+                {%endfor%}
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 my-2">
         <table class="table table-bordered">
             <tr>
-                <th> </th>
+                <th></th>
                 {% for company in companies %}
-                    <th>{{ company.name }}</th>
+                <th style="text-align: center">{{ company.name|cut:'ООО'|cut:'"' }}</th>
                 {% endfor %}
             </tr>
             {% for bank in banks %}
-                <tr>
-                    <td>{{bank.name}} </td>
-                    {% for company in companies %}
-                       <td>
-                           {% for account in bank_accounts %}
-
-                                {% if account.company_id == company.id and bank.id == account.bank_id%}
-                                    {{account}}
-                                {% endif %}
-
-                            {% endfor %}
-                       </td>
+            <tr>
+                <th>{{bank.name}}</th>
+                {% for company in companies %}
+                <td style="min-width: 100px; text-align:center">
+                    {% for account in bank_accounts %}
+                    {% if account.company_id == company.id and bank.id == account.bank_id%}
+                    {{account.balance|intcomma}}
+                    {{account.date_update}}
+                    {% endif %}
                     {% endfor %}
-                </tr>
+                </td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-
+            <tr>
+                <th>ИТОГО</th>
+                {% for company in companies %}
+                <td style="text-align: center">
+                    {% for com in bal_firm%}
+                        {% if company.name == com.company__name %}
+                            <b>{{com.total|intcomma}}</b>
+                        {%endif%}
+                    {%endfor%}
+                </td>
+                {% endfor %}
+            </tr>
         </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="{% url 'bank:bank_add' %}" role="button">Добавить</a>
     </div>
 </div>
 {% endblock %}

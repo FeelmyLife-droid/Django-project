@@ -4,7 +4,8 @@
 
 
 {% block content %}
-<div class="col-md-10 mx-auto my-2">
+<div class="row">
+    <div class="col-md-12 my-2">
     <table class="table table-striped">
         <tr>
             <th>Название фирмы</th>
@@ -31,5 +32,11 @@
         </tr>
         {% endfor %}
     </table>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="{% url 'company:add_company' %}" role="button">Добавить</a>
+    </div>
 </div>
 {% endblock content %}

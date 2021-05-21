@@ -1,5 +1,6 @@
 from django.db.models import Sum
-from django.views.generic import ListView, TemplateView, DetailView
+from django.urls import reverse
+from django.views.generic import ListView, TemplateView, DetailView, CreateView
 
 from Company.models import Company
 from Director.models import Director
@@ -14,14 +15,13 @@ class DirectorViews(ListView):
     template_name = "Director/directors.html"
 
 
-class HomeViews(TemplateView):
-    template_name = 'home.html'
+class DirectorAdd(CreateView):
+    model = Director
+    template_name = "Director/director_form.html"
+    fields = '__all__'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['balance'] = BankAccount.objects.aggregate(balance=Sum('balance', decimal_places=2))
-        print(context['balance'])
-        return context
+    def get_success_url(self):
+        return reverse('director:director')
 
 
 class DirectorDetail(DetailView):

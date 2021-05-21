@@ -17,7 +17,6 @@ class Company(models.Model):
     email = models.EmailField(blank=True)
     directors = models.ForeignKey(Director, null=True, verbose_name='Директор', on_delete=models.CASCADE)
 
-
     def __str__(self):
         return self.name
 
@@ -25,6 +24,7 @@ class Company(models.Model):
         self.slug = slugify(self.name)
         self.email = str(self.slug) + str(self.inn[:-3:-1])+'@mailtorg.ru'
         super().save(*args, **kwargs)
+
 
     class Meta:
         verbose_name = 'Фирма'
