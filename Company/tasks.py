@@ -12,7 +12,7 @@ from Director.models import Director
 from bank.models import BankAccount
 
 
-@shared_task
+@shared_task(max_retries=10, default_retry_delay=20, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
         1: get_balance_otk,
@@ -24,7 +24,7 @@ def get_balance(account, bank_id, login=None, password=None):
     method(account, login=login, password=password)
 
 
-@shared_task
+@shared_task(max_retries=10, default_retry_delay=20, soft_time_limit=300, autoretry_for=(Exception,))
 def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
@@ -43,13 +43,13 @@ def get_balance_otk(account=None, login=None, password=None):
     with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=options,
                           command_executor='http://127.0.0.1:4444/wd/hub') as browser:
         browser.get(url)
-        WebDriverWait(browser, 10).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.NAME, 'username'))).send_keys(str(login))
-        WebDriverWait(browser, 10).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.NAME, 'password'))).send_keys(str(password))
-        WebDriverWait(browser, 10).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '[type=submit]'))).click()
-        bank_account = WebDriverWait(browser, 10).until(
+        bank_account = WebDriverWait(browser, 180).until(
             EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[3]/span'))
         ).text.split("₽")[0].replace(" ", "").replace(',', '.')
@@ -57,7 +57,7 @@ def get_balance_otk(account=None, login=None, password=None):
         browser.get('https://internetbankmb.open.ru/app/cards')
         card = 0
         try:
-            c = WebDriverWait(browser, 10).until(
+            c = WebDriverWait(browser, 180).until(
                 EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div[4]/main/div/div[2]/div'))).text
             for i in c.split("₽"):
                 try:
@@ -71,7 +71,7 @@ def get_balance_otk(account=None, login=None, password=None):
     BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
 
 
-@shared_task
+@shared_task(max_retries=10, default_retry_delay=20, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
@@ -85,19 +85,19 @@ def get_balance_alfa(name_director):
         with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=options,
                               command_executor='http://127.0.0.1:4444/wd/hub') as browser:
             browser.get(url)
-            WebDriverWait(browser, 10).until(
+            WebDriverWait(browser, 180).until(
                 EC.presence_of_element_located((By.NAME, 'username'))).send_keys(str(login))
-            button = WebDriverWait(browser, 10).until(
+            button = WebDriverWait(browser, 180).until(
                 EC.element_to_be_clickable((By.XPATH, '//*[@id="login-submit"]')))
             browser.execute_script("arguments[0].click();", button)
-            WebDriverWait(browser, 10).until(
+            WebDriverWait(browser, 180).until(
                 EC.presence_of_element_located((By.NAME, 'password'))).send_keys(str(password))
-            button = WebDriverWait(browser, 10).until(
+            button = WebDriverWait(browser, 180).until(
                 EC.element_to_be_clickable((By.XPATH, '//*[@id="password-submit"]')))
             browser.execute_script("arguments[0].click();", button)
             time.sleep(10)
             browser.get(url1)
-            tr = WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.ID, 'isc_4Q'))).text
+            tr = WebDriverWait(browser, 180).until(EC.presence_of_element_located((By.ID, 'isc_4Q'))).text
             lis = []
             for i in tr.strip().split('\n'):
                 lis.append(i.lstrip())
@@ -114,7 +114,7 @@ def get_balance_alfa(name_director):
                 )
 
 
-def get_balance_modul(account=None, login=None, password=None):
+def get_balance_modul(account=None, login=None,password=None):
     print(f'Запрос в банк MODUL {account}')
     url = "https://api.modulbank.ru/v1/account-info"
     headers = {
@@ -125,7 +125,8 @@ def get_balance_modul(account=None, login=None, password=None):
     response = httpx.post(url=url, headers=headers).json()
     a = {}
     for i in response:
-        a[f"ООО {i['companyName'].split(' ')[-1]}"] = {k['accountName']: k['balance'] for k in i['bankAccounts']}
+        a[f"ООО{i['companyName'].split('ОТВЕТСТВЕННОСТЬЮ')[-1]}"] = {k['accountName']: k['balance'] for k in
+                                                                     i['bankAccounts']}
     for i in a.items():
         company = i[0]
         balance: int = 0
@@ -145,15 +146,15 @@ def get_balance_raif(account, login=None, password=None):
     with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=options,
                           command_executor='http://127.0.0.1:4444/wd/hub') as browser:
         browser.get(url)
-        WebDriverWait(browser, 30).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.XPATH, "//a[@href='https://www.rbo.raiffeisen.ru']"))).click()
-        WebDriverWait(browser, 30).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.NAME, 'login'))).send_keys(str(login))
-        WebDriverWait(browser, 30).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.NAME, 'password'))).send_keys(str(password))
-        WebDriverWait(browser, 30).until(
+        WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '.form__button'))).click()
-        c = WebDriverWait(browser, 60).until(
+        c = WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-balance'))).text
         balance = float(c.split("₽")[0].replace(" ", ""))
         print(balance)

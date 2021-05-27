@@ -13,11 +13,14 @@
                    value="Общий баланс :   {{balance.balance|intcomma}} рублей">
         </form>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-6">
 
     </div>
     <div class="col-md-2">
         <h6 data-tooltip title="{% for error in date_error %}{{error}}{%endfor%}"><b>{{balance.date_updated|naturaltime}}</b></h6>
+    </div>
+    <div class="col-md-1">
+        <a class="btn btn-primary" href="#" role="button">Обновить</a>
     </div>
 </div>
 <div class="row">

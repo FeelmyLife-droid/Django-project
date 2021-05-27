@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.utils import timezone
 
 
@@ -35,3 +36,23 @@ class BankAccount(models.Model):
         verbose_name = 'Аккаунт'
         verbose_name_plural = 'Аккаунты'
         ordering = ["bank_id"]
+
+
+class Mailbank(models.Model):
+    account = models.ForeignKey('BankAccount', on_delete=models.CASCADE, verbose_name='Аккаунт',
+                                related_name='bankaccounts')
+    date_mail = models.DateTimeField(null=True)
+    title_mail = models.CharField(max_length=255, null=True, verbose_name='Заголовок письма')
+    content_mail = models.TextField(null=True)
+    sender_mail = models.CharField(max_length=255, null=True, verbose_name='Отправитель')
+    publication_mail = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.account}'
+        #######
+    # def create_mail(sender, **kwargs):
+    #     if kwargs['created']:
+    #         mail_bank = Mailbank.objects.create(account=kwargs['instance'])
+    #
+    # post_save.connect(create_mail, sender=BankAccount)
+    #####
