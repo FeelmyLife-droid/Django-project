@@ -8,24 +8,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from bank.models import Mailbank
+
 
 locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 
 def get_message(account: int, text_mail: str):
     spisok = [str(i) for i in text_mail.split('\n')]
+    print(spisok)
     start = 0
     end = 4
 
-    while end <= len(spisok):
-        mes = spisok[start:end]
-        mes[3] = make_aware(datetime.strptime(mes[3], "%d %B %Y, %H:%M"))
-        if not Mailbank.objects.get(date_mail=mes[3]):
-            Mailbank.objects.create(account_id=account, title_mail=mes[0], sender_mail=mes[1], content_mail=mes[2],
-                                    date_mail=mes[3])
-        start = end
-        end += 4
+    # while end <= len(spisok):
+    #     mes = spisok[start:end]
+    #     mes[3] = make_aware(datetime.strptime(mes[3], "%d %B %Y, %H:%M"))
+    #     if not Mailbank.objects.get(date_mail=mes[3]):
+    #         Mailbank.objects.create(account_id=account, title_mail=mes[0], sender_mail=mes[1], content_mail=mes[2],
+    #                                 date_mail=mes[3])
+    #     start = end
+    #     end += 4
 
 
 def get_balance_otk(account=None, login=None, password=None):

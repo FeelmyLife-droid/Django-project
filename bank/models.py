@@ -49,10 +49,12 @@ class Mailbank(models.Model):
 
     def __str__(self):
         return f'{self.account}'
-        #######
-    # def create_mail(sender, **kwargs):
-    #     if kwargs['created']:
-    #         mail_bank = Mailbank.objects.create(account=kwargs['instance'])
-    #
-    # post_save.connect(create_mail, sender=BankAccount)
-    #####
+
+    def get_absolute_url(self):
+        return '/'
+
+    # def read_mail(self, id):
+    #     mail = Mailbank.objects.get(id=id)
+    #     mail.publication_mail = False
+    #     mail.save()
+    #     return

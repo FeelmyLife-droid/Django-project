@@ -1,24 +1,29 @@
+import locale
 import time
+from datetime import datetime
 
 import httpx
 from celery import shared_task
 from django.utils import timezone
+from django.utils.timezone import make_aware
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Director.models import Director
-from bank.models import BankAccount
+from bank.models import BankAccount, Mailbank
+
+locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 
 @shared_task(max_retries=10, default_retry_delay=20, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
         1: get_balance_otk,
-        2: get_balance_alfa,
-        3: get_balance_modul,
-        4: get_balance_raif
+        # 2: get_balance_alfa,
+        # 3: get_balance_modul,
+        # 4: get_balance_raif
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -29,9 +34,24 @@ def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
         get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    directors = Director.objects.all()
-    for dir in directors:
-        get_balance_alfa.delay(dir.pk)
+    # directors = Director.objects.all()
+    # for dir in directors:
+    #     get_balance_alfa.delay(dir.pk)
+
+
+def get_message(account: int, text_mail: str):
+    spisok = [str(i) for i in text_mail.split('\n')]
+    start = 0
+    end = 4
+
+    while end <= len(spisok):
+        mes = spisok[start:end]
+        mes[3] = make_aware(datetime.strptime(mes[3], "%d %B %Y, %H:%M"))
+        if not Mailbank.objects.filter(date_mail=mes[3]).exists():
+            Mailbank.objects.create(account_id=account, title_mail=mes[0], sender_mail=mes[1], content_mail=mes[2],
+                                    date_mail=mes[3])
+        start = end
+        end += 4
 
 
 def get_balance_otk(account=None, login=None, password=None):
@@ -66,12 +86,19 @@ def get_balance_otk(account=None, login=None, password=None):
                     pass
         except:
             card = 0
+        time.sleep(3)
+        browser.get('https://internetbankmb.open.ru/app/messages')
+        try:
+            text_mail = WebDriverWait(browser, 180).until(
+                EC.presence_of_element_located((By.CLASS_NAME, 'tabWrapper___J3M8A'))).text
+        except:
+            pass
     bal = float("{:.2f}".format(float(bank_account) + float(card)))
-    print(bal)
+    get_message(account, text_mail)
     BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
 
 
-@shared_task(max_retries=10, default_retry_delay=20, soft_time_limit=300, autoretry_for=(Exception,))
+# @shared_task(max_retries=10, default_retry_delay=20, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
@@ -114,7 +141,7 @@ def get_balance_alfa(name_director):
                 )
 
 
-def get_balance_modul(account=None, login=None,password=None):
+def get_balance_modul(account=None, login=None, password=None):
     print(f'Запрос в банк MODUL {account}')
     url = "https://api.modulbank.ru/v1/account-info"
     headers = {

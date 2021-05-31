@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+{% block title %} Почта {% endblock title %}
+{% block header %} Почта аккаунта {{object}} {% endblock header %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>От Кого</th>
+                    <th>Дата</th>
+                    <th>Тема письма</th>
+                    <th>Содержание</th>
+                    <th>Прочитать</th>
+                </tr>
+                {% for object in object_list %}
+                {% if object.publication_mail %}
+                    <tr>
+                        <td>{{object.sender_mail}}</td>
+                        <td>{{object.date_mail}}</td>
+                        <td>{{object.title_mail |truncatechars:50}}</td>
+                        <td>{{object.content_mail |truncatechars:100}}</td>
+                        <td>
+                            <form action="{% url 'bank:mail_account_update' object.pk %}" method="post">{% csrf_token %}
+                                <button type="submit" class="btn btn-danger"> Пометить как прочитано</button>
+                            </form>
+                        </td>
+                    </tr>
+                {%endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
