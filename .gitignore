@@ -6,6 +6,8 @@ __pycache__/
 *$py.class
 datadump.json
 *.dump
+.DS_Store
+
 
 
 # C extensions
