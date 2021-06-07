@@ -14,7 +14,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'update_balance': {
         'task': 'Company.tasks.update_balance',
-        'schedule': 300,
-        # 'schedule': crontab(minute=0, hour='*/1')
+        'schedule': 600,
+        # 'schedule': crontab(minute=0, hour='*/1,6-23')
     },
 }
