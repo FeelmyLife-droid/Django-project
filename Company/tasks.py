@@ -21,10 +21,11 @@ locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 @shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
-        1: get_balance_otk,
-        2: get_balance_alfa,
-        3: get_balance_modul,
-        4: get_balance_raif
+        # 1: get_balance_otk,
+        # 2: get_balance_alfa,
+        # 3: get_balance_modul,
+        # 4: get_balance_raif,
+        5: get_balance_psb,
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -35,9 +36,9 @@ def update_balance():
     firms = BankAccount.objects.exclude(bank_id=2)
     for firm in firms:
         get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    directors = Director.objects.all()[:5]
-    for dir in directors:
-        get_balance_alfa.delay(dir.pk)
+    # directors = Director.objects.all()
+    # for dir in directors:
+    #     get_balance_alfa.delay(dir.pk)
 
 
 def get_message_otk(account: int, text_mail: str):
@@ -316,13 +317,13 @@ def get_balance_psb(account, login=None, password=None):
         browser.get(url)
 
         WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.NAME, 'login'))).send_keys("Inkom12345")
+            EC.presence_of_element_located((By.NAME, 'login'))).send_keys(str(login))
 
         WebDriverWait(browser, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys(
-            "ASDzxc123qwe")
+            str(password))
 
-        button = WebDriverWait(browser, 10).until(
+        WebDriverWait(browser, 10).until(
             EC.element_to_be_clickable((By.XPATH,
                                         '/html/body/smb-app/smb-login/div/div[1]/div/smb-login-form/div/form/div[3]/div[2]/button'))).click()
 
@@ -355,7 +356,7 @@ def get_balance_psb(account, login=None, password=None):
             while end <= len(mail):
                 mes = mail[start:end]
                 mes[0] = mes[0].replace(".", ' ')
-                date = datetime.strptime(mes[0] + ', 00:00', "%d %m %Y, %H:%M")
+                date = make_aware(datetime.strptime(mes[0] + ', 00:00', "%d %m %Y, %H:%M"))
                 if not Mailbank.objects.filter(date_mail=date, account_id=account).exists():
                     Mailbank.objects.create(account_id=account, title_mail=mes[1], sender_mail=mes[2],
                                             content_mail=mes[1],
