@@ -303,3 +303,62 @@ def get_balance_raif(account, login=None, password=None):
             get_message_raif(text=mail, account=account)
 
         BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
+
+
+def get_balance_psb(account, login=None, password=None):
+    url = "https://business.psbank.ru/auth/login"
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument("--start-maximized")
+    options.add_argument('window-size=2560,1440')
+    with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=options,
+                          command_executor='http://127.0.0.1:4444/wd/hub') as browser:
+        browser.get(url)
+
+        WebDriverWait(browser, 10).until(
+            EC.presence_of_element_located((By.NAME, 'login'))).send_keys("Inkom12345")
+
+        WebDriverWait(browser, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys(
+            "ASDzxc123qwe")
+
+        button = WebDriverWait(browser, 10).until(
+            EC.element_to_be_clickable((By.XPATH,
+                                        '/html/body/smb-app/smb-login/div/div[1]/div/smb-login-form/div/form/div[3]/div[2]/button'))).click()
+
+        card_balance = WebDriverWait(browser, 60).until(
+            EC.presence_of_element_located(
+                (By.XPATH,
+                 '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-main/smb-main-details/div[1]/div/smb-account-section/section/mat-tab-group/div/mat-tab-body[1]/div/div/div[4]/div/smb-account-cards/div/div/smb-card-container/div/div/div[1]/div[2]/div[2]'))).text
+
+        card = float(card_balance.split(" ")[1].replace(',', '.'))
+
+        chet_balance = WebDriverWait(browser, 60).until(
+            EC.presence_of_element_located(
+                (By.XPATH,
+                 '/html/body/smb-app/smb-app-main/div/div/div/div[1]/smb-aside/aside/div/div/smb-menu/div/div/ul[1]/li[2]/div[2]/scroll-bar/div/div[2]/div/a[2]/span'))).text
+        chet = float(chet_balance.split('\n')[-1].split(' ')[0])
+        balance = card + chet
+
+        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
+
+        browser.get('https://business.psbank.ru/correspondence')
+
+        mail_temp = WebDriverWait(browser, 10).until(
+            EC.element_to_be_clickable((By.XPATH,
+                                        '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-correspondence/smb-letter-section/section/div[2]/smb-mailing-list/div'))).text
+
+        mail = mail_temp.split('\n')[3::]
+        if mail:
+            start = 0
+            end = 3
+            while end <= len(mail):
+                mes = mail[start:end]
+                mes[0] = mes[0].replace(".", ' ')
+                date = datetime.strptime(mes[0] + ', 00:00', "%d %m %Y, %H:%M")
+                if not Mailbank.objects.filter(date_mail=date, account_id=account).exists():
+                    Mailbank.objects.create(account_id=account, title_mail=mes[1], sender_mail=mes[2],
+                                            content_mail=mes[1],
+                                            date_mail=date)
+                start = end
+                end += 3
