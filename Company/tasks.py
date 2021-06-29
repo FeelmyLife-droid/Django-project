@@ -139,7 +139,7 @@ def get_mail_alfa(browser: webdriver.Remote, name_company: str) -> None:
         end += 3
 
 
-@shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
+# @shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
@@ -303,11 +303,11 @@ def get_balance_psb(account, login=None, password=None):
 
         WebDriverWait(browser, 10).until(
             EC.presence_of_element_located(
-                (By.NAME, 'login'))).send_keys("Delavto12345")
+                (By.NAME, 'login'))).send_keys(login)
 
         WebDriverWait(browser, 10).until(
             EC.presence_of_element_located(
-                (By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys("ASDzxc123qwe")
+                (By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys(password)
 
         WebDriverWait(browser, 10).until(
             EC.element_to_be_clickable(
