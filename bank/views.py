@@ -34,8 +34,6 @@ class BankViews(ListView):
                 count=Count('id', filter=Q(publication_mail=True)),
             )
         }
-        print(context['mail_accounts'])
-
         return context
 
 

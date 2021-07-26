@@ -19,6 +19,7 @@ class DirectorAdd(CreateView):
     model = Director
     template_name = "Director/director_form.html"
     fields = '__all__'
+    print(fields)
 
     def get_success_url(self):
         return reverse('director:director')

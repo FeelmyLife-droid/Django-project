@@ -3,12 +3,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{% block title %} First
         {% endblock title %}
     </title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=6a9279c1-e6d3-4097-97dc-4df971c317d0"
+            type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 </head>
 <body>
 
@@ -36,24 +41,18 @@
     </nav>
     <div class="container-xxl">
         <div class="container text-center">
-            <h1 > {% block header %} {%endblock header%}</h1>
+            <h1> {% block header %} {%endblock header%}</h1>
         </div>
         {% block content %} {%endblock content%}
     </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
 <script>
-    $(function (){
+    $(function () {
         $('[data-tooltip]').tooltip();
     })
-    $(function (){
+    $(function () {
         $('[data-tooltip2]').tooltip();
     })
 </script>

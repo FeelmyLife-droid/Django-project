@@ -2,6 +2,7 @@ from django.db.models import Sum
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 
+from Company.forms import CompanyForms
 from Company.models import Company
 from test import check_age
 
@@ -29,7 +30,7 @@ class CompanyDetail(DetailView):
 class CompanyAdd(CreateView):
     model = Company
     template_name = "Company/company_form.html"
-    fields = '__all__'
+    form_class = CompanyForms
 
     def get_success_url(self):
         return reverse('company:company')
