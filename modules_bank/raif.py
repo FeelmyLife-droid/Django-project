@@ -38,9 +38,9 @@ def get_balance_raif(account=None, login=None, password=None):
         WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.XPATH, "//a[@href='https://www.rbo.raiffeisen.ru']"))).click()
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'login'))).send_keys('avtolaener')
+            EC.presence_of_element_located((By.NAME, 'login'))).send_keys('stprom12')
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'password'))).send_keys('ASDzxc123qwe')
+            EC.presence_of_element_located((By.NAME, 'password'))).send_keys('!@#123qweasdzxc')
         WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '.form__button'))).click()
         c = WebDriverWait(browser, 180).until(

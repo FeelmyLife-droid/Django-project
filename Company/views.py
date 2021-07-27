@@ -23,7 +23,6 @@ class CompanyDetail(DetailView):
         context['age'] = check_age(self.object.directors.date_of_birth)
         context['balance'] = self.object.company.aggregate(balance=Sum('balance', decimal_places=2))
 
-        print(context)
         return context
 
 
