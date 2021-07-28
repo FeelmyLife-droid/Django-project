@@ -40,7 +40,7 @@ with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=op
     browser.get(url)
 
     WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.NAME, 'username'))).send_keys("Zerno@mailtorg.ru")
+        EC.presence_of_element_located((By.NAME, 'username'))).send_keys("stprom@mailtorg.ru")
 
     button = WebDriverWait(browser, 10).until(
         EC.element_to_be_clickable((By.XPATH, '//*[@id="login-submit"]')))
@@ -87,13 +87,3 @@ with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=op
 
     print(temp_dict)
     print(1)
-
-    # mail_company = get_mail(browser)
-    # print(mail_company)
-    # name_company = WebDriverWait(browser, 10).until(
-    #     EC.presence_of_element_located(
-    #         (By.XPATH, '/html/body/div[1]/div/div[1]/section/div/div[1]/div/div/div/div[1]/button/span[2]'))).text_mail
-    # lis = []
-    # for i in tr.strip().split('\n'):
-    #     lis.append(i.lstrip())
-    # print(lis)
