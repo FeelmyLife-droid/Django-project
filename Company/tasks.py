@@ -24,8 +24,8 @@ def get_balance(account, bank_id, login=None, password=None):
         # 1: get_balance_otk,
         # 2: get_balance_alfa,
         # 3: get_balance_modul,
-        4: get_balance_raif,
-        # 5: get_balance_psb,
+        # 4: get_balance_raif,
+        5: get_balance_psb,
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -343,13 +343,16 @@ def get_balance_psb(account, login=None, password=None):
              '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-accounts/section/smb-account-groups/div/div')))
 
         balance_account = info_account.find_elements_by_class_name('content-row')
-
+        in_block = False
         for i in balance_account:
             p = i.text.split('\n')
             if p[0] == "Расчётный":
+                if p[-1] == "Заблокирован":
+                    in_block = True
                 chet = float(p[2].split('₽')[0].replace(',', '.').replace(" ", ""))
             elif p[0] == "Карточный":
-                browser.get(f"https://business.psbank.ru/accounts/account/{p[1].replace(' ', '')}/cards")
+                number_cards = p[1].replace(' ', '')
+        browser.get(f"https://business.psbank.ru/accounts/account/{number_cards}/cards")
         card_balance = WebDriverWait(browser, 60).until(
             EC.presence_of_element_located(
                 (By.XPATH,
@@ -358,26 +361,26 @@ def get_balance_psb(account, login=None, password=None):
         card = float(card_balance.split(" ")[-2].replace(",", ".").replace(" ", ""))
 
         balance = card + chet
-        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
+        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now(), in_block=in_block)
 
-        browser.get('https://business.psbank.ru/correspondence')
+        # browser.get('https://business.psbank.ru/correspondence')
 
-        mail_temp = WebDriverWait(browser, 10).until(
-            EC.element_to_be_clickable(
-                (By.XPATH,
-                 '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-correspondence/smb-letter-section/section/div[2]/smb-mailing-list/div'))).text
-
-        mail = mail_temp.split('\n')[3::]
-        if mail:
-            start = 0
-            end = 3
-            while end <= len(mail):
-                mes = mail[start:end]
-                mes[0] = mes[0].replace(".", ' ')
-                date = make_aware(datetime.strptime(mes[0] + ', 00:00', "%d %m %Y, %H:%M"))
-                if not Mailbank.objects.filter(date_mail=date, account_id=account).exists():
-                    Mailbank.objects.create(account_id=account, title_mail=mes[1], sender_mail=mes[2],
-                                            content_mail=mes[1],
-                                            date_mail=date)
-                start = end
-                end += 3
+        # mail_temp = WebDriverWait(browser, 10).until(
+        #     EC.element_to_be_clickable(
+        #         (By.XPATH,
+        #          '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-correspondence/smb-letter-section/section/div[2]/smb-mailing-list/div'))).text
+        #
+        # mail = mail_temp.split('\n')[3::]
+        # if mail:
+        #     start = 0
+        #     end = 3
+        #     while end <= len(mail):
+        #         mes = mail[start:end]
+        #         mes[0] = mes[0].replace(".", ' ')
+        #         date = make_aware(datetime.strptime(mes[0] + ', 00:00', "%d %m %Y, %H:%M"))
+        #         if not Mailbank.objects.filter(date_mail=date, account_id=account).exists():
+        #             Mailbank.objects.create(account_id=account, title_mail=mes[1], sender_mail=mes[2],
+        #                                     content_mail=mes[1],
+        #                                     date_mail=date)
+        #         start = end
+        #         end += 3

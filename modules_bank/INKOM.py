@@ -34,15 +34,16 @@ with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=op
                                                                                 '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-accounts/section/smb-account-groups/div/div')))
 
     balance_account = info_account.find_elements_by_class_name('content-row')
-
+    in_block = False
     for i in balance_account:
         p = i.text.split('\n')
         if p[0] == "Расчётный":
+            if p[-1] == "Заблокирован":
+                in_block = True
             chet = float(p[2].split('₽')[0].replace(',', '.').replace(" ", ""))
         elif p[0] == "Карточный":
-            chet_card = p[1].replace(' ', '')
-
-    browser.get(f"https://business.psbank.ru/accounts/account/{chet_card}/cards")
+            number_cards = p[1].replace(' ', '')
+    browser.get(f"https://business.psbank.ru/accounts/account/{number_cards}/cards")
     card_balance = WebDriverWait(browser, 60).until(
         EC.presence_of_element_located(
             (By.XPATH,
@@ -52,6 +53,7 @@ with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=op
 
     balance = card + chet
     print(balance)
+    print(in_block)
 
     # browser.get('https://business.psbank.ru/correspondence')
     #
