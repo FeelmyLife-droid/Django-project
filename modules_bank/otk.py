@@ -49,6 +49,12 @@ def get_balance_otk(account=None, login=None, password=None):
                 (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[3]/span'))
 
         ).text.split("₽")[0].replace(" ", "").replace(',', '.')
+        in_block_status = WebDriverWait(browser, 180).until(
+            EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[1]')
+            )
+        )
+        t = len(in_block_status.find_elements_by_tag_name("svg"))
         time.sleep(3)
         browser.get('https://internetbankmb.open.ru/app/cards')
         card = 0
@@ -63,18 +69,20 @@ def get_balance_otk(account=None, login=None, password=None):
         except:
             card = 0
         time.sleep(3)
-        browser.get('https://internetbankmb.open.ru/app/messages')
-        try:
-            text_mail = WebDriverWait(browser, 180).until(
-                EC.presence_of_element_located((By.CLASS_NAME, 'react-tabs__tab-panel'))).text
-        except:
-            pass
+        # browser.get('https://internetbankmb.open.ru/app/messages')
+        # try:
+        #     text_mail = WebDriverWait(browser, 180).until(
+        #         EC.presence_of_element_located((By.CLASS_NAME, 'react-tabs__tab-panel'))).text
+        # except:
+        #     pass
 
     bal = float("{:.2f}".format(float(account) + float(card)))
     print(bal)
+    if t != 1:
+        print("чисто")
+    print("Заблокирован")
     # print(1)
     # get_message(account, text_mail)
-
 
 
 if __name__ == '__main__':

@@ -38,20 +38,29 @@ def get_balance_raif(account=None, login=None, password=None):
         WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.XPATH, "//a[@href='https://www.rbo.raiffeisen.ru']"))).click()
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'login'))).send_keys('stprom12')
+            EC.presence_of_element_located((By.NAME, 'login'))).send_keys('pobeda10')
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'password'))).send_keys('!@#123qweasdzxc')
+            EC.presence_of_element_located((By.NAME, 'password'))).send_keys('ASDzxc123qwe')
         WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '.form__button'))).click()
         c = WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-balance'))).text
         balance = float(c.split("₽")[0].replace(" ", ""))
-        browser.get('https://www.rbo.raiffeisen.ru/messages')
-        p = WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.CLASS_NAME, 'b-spreadsheet__table-body-inner'))
-        )
+        status_block = None
+
+        try:
+            status_block = WebDriverWait(browser, 1).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-status'))).text
+        except Exception as E:
+            in_block = False
+        if status_block:
+            in_block = True
+        # browser.get('https://www.rbo.raiffeisen.ru/messages')
+        # p = WebDriverWait(browser, 180).until(
+        #     EC.presence_of_element_located((By.CLASS_NAME, 'b-spreadsheet__table-body-inner'))
+        # )
         print(balance)
-        print(p.text)
+        print(in_block)
         # get_message(text=p, account=account)
 
 

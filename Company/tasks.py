@@ -24,8 +24,8 @@ def get_balance(account, bank_id, login=None, password=None):
         # 1: get_balance_otk,
         # 2: get_balance_alfa,
         # 3: get_balance_modul,
-        # 4: get_balance_raif,
-        5: get_balance_psb,
+        4: get_balance_raif,
+        # 5: get_balance_psb,
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -91,7 +91,12 @@ def get_balance_otk(account=None, login=None, password=None):
             EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[3]/span'))
         ).text.split("₽")[0].replace(" ", "").replace(',', '.')
-        time.sleep(3)
+        in_block_status = WebDriverWait(browser, 180).until(
+            EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[1]')
+            )
+        )
+        in_block = len(in_block_status.find_elements_by_tag_name("svg"))
         browser.get('https://internetbankmb.open.ru/app/cards')
         card = 0
         try:
@@ -104,7 +109,6 @@ def get_balance_otk(account=None, login=None, password=None):
                     pass
         except:
             card = 0
-        time.sleep(3)
         browser.get('https://internetbankmb.open.ru/app/messages')
         try:
             text_mail = WebDriverWait(browser, 180).until(
@@ -113,7 +117,9 @@ def get_balance_otk(account=None, login=None, password=None):
             pass
     bal = float("{:.2f}".format(float(bank_account) + float(card)))
     get_message_otk(account, text_mail)
-    BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
+    if in_block != 1:
+        BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now(), in_block=False)
+    BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now(), in_block=True)
 
 
 def get_mail_alfa(browser: webdriver.Remote, name_company: str) -> None:
@@ -247,18 +253,21 @@ def get_balance_modul(account=None, login=None, password=None):
     response = httpx.post(url=url, headers=headers).json()
     a = {}
     for i in response:
-        a[f"ООО{i['companyName'].split('ОТВЕТСТВЕННОСТЬЮ')[-1]}"] = {k['accountName']: k['balance'] for k in
-                                                                     i['bankAccounts']}
+        a[f"ООО{i['companyName'].split('ОТВЕТСТВЕННОСТЬЮ')[-1]}"] = {k['accountName']: (k['balance'], k['status']) for k
+                                                                     in i['bankAccounts']}
     for i in a.items():
         company = i[0]
         balance: int = 0
+        in_block = False
         for k in i[1].values():
-            balance += k
+            balance += k[0]
+            if k[1] != "New":
+                in_block = True
         BankAccount.objects.filter(company__name__iexact=company, bank_id=3).update(
             balance=balance,
-            date_updated=timezone.now()
+            date_updated=timezone.now(),
+            in_block=in_block
         )
-        print(balance)
 
 
 def get_balance_raif(account, login=None, password=None):
@@ -282,7 +291,17 @@ def get_balance_raif(account, login=None, password=None):
             EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-balance'))).text
         balance = float(c.split("₽")[0].replace(" ", ""))
         print(balance)
-        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
+
+        status_block = None
+        try:
+            status_block = WebDriverWait(browser, 180).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-status'))).text
+        except Exception as E:
+            in_block = False
+        if status_block:
+            in_block = True
+
+        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now(), in_block=in_block)
         browser.get('https://www.rbo.raiffeisen.ru/messages')
         mail = WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'b-spreadsheet__main'))
