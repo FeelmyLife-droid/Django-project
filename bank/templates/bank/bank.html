@@ -47,7 +47,7 @@
                 <td style="min-width: 100px; text-align:center">
                     {% for account in bank_accounts %}
                         {% if account.company_id == company.id and bank.id == account.bank_id%}
-                            {{account.balance|intcomma}}
+                                <span {% if account.in_block %} style="color:red" {% endif %}>{{account.balance}}</span>
                         {% for mail in mail_accounts %}
                             {% if account.id == mail.account_id and mail.count > 0 %}
                                 <a href="{% url 'bank:mail_account' account.id%}" data-tooltip2 title="{{mail.count}}"><img src="https://image.flaticon.com/icons/png/512/646/646094.png" width="15"

@@ -7,5 +7,13 @@ class CompanyForms(forms.ModelForm):
         model = Company
 
         fields = [
-            '__all__'
+            'name',
+            'inn',
+            'okved',
+            'legal_address',
+            'date_of_application',
+            'registration_date',
+            'charter_number',
+            'email',
+            'directors',
         ]

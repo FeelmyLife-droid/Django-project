@@ -24,8 +24,8 @@ def get_balance(account, bank_id, login=None, password=None):
         # 1: get_balance_otk,
         # 2: get_balance_alfa,
         # 3: get_balance_modul,
-        # 4: get_balance_raif,
-        5: get_balance_psb,
+        4: get_balance_raif,
+        # 5: get_balance_psb,
     }
     method = methods.get(bank_id)
     method(account, login=login, password=password)
@@ -91,7 +91,12 @@ def get_balance_otk(account=None, login=None, password=None):
             EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[3]/span'))
         ).text.split("₽")[0].replace(" ", "").replace(',', '.')
-        time.sleep(3)
+        in_block_status = WebDriverWait(browser, 180).until(
+            EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div[4]/main/div/div[3]/div/div[1]/div/div[1]')
+            )
+        )
+        in_block = len(in_block_status.find_elements_by_tag_name("svg"))
         browser.get('https://internetbankmb.open.ru/app/cards')
         card = 0
         try:
@@ -104,7 +109,6 @@ def get_balance_otk(account=None, login=None, password=None):
                     pass
         except:
             card = 0
-        time.sleep(3)
         browser.get('https://internetbankmb.open.ru/app/messages')
         try:
             text_mail = WebDriverWait(browser, 180).until(
@@ -113,23 +117,9 @@ def get_balance_otk(account=None, login=None, password=None):
             pass
     bal = float("{:.2f}".format(float(bank_account) + float(card)))
     get_message_otk(account, text_mail)
-    BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now())
-
-
-@shared_task
-def get_balance_firm_alfa(list_firm: str) -> None:
-    print('Получение баланса')
-    spisok = list_firm.split('\n')[2::]
-    start = 0
-    end = 2
-    while end <= len(spisok):
-        mes = spisok[start:end]
-        BankAccount.objects.filter(company__name__iexact=mes[0], bank_id=2).update(
-            balance=mes[1].split('\u2009')[0].replace(",", ".").replace(" ", ""),
-            date_updated=timezone.now()
-        )
-        start = end
-        end += 2
+    if in_block != 1:
+        BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now(), in_block=False)
+    BankAccount.objects.filter(pk=account).update(balance=bal, date_updated=timezone.now(), in_block=True)
 
 
 def get_mail_alfa(browser: webdriver.Remote, name_company: str) -> None:
@@ -155,7 +145,7 @@ def get_mail_alfa(browser: webdriver.Remote, name_company: str) -> None:
         end += 3
 
 
-@shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
+# @shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
@@ -187,7 +177,11 @@ def get_balance_alfa(name_director):
                 EC.element_to_be_clickable(
                     (By.XPATH, '//*[@id="corp-header"]/div/div[1]/div/div/div/div[1]/div[2]/div/div[2]'))
             )
-            spisok = list_company_temp.text.split('\n')[2::]
+            spisok_temp = list_company_temp.text.split('\n')
+            if len(spisok_temp) <= 3:
+                spisok = spisok_temp[1::]
+            elif len(spisok_temp) > 3:
+                spisok = spisok_temp[2::]
             spisok_name = []
             start = 0
             end = 2
@@ -200,10 +194,10 @@ def get_balance_alfa(name_director):
                 )
                 start = end
                 end += 2
-
             radio_button = list_company_temp.find_elements_by_class_name('radio__container_umh77')
-            for i in range(len(radio_button)):
-                radio_button[i].click()
+            count = 0
+            while count < len(radio_button):
+                radio_button[count].click()
                 WebDriverWait(browser, 60).until(
                     EC.element_to_be_clickable(
                         (By.XPATH, '/html/body/div[1]/div/div[1]/section/div/div[3]/div/div/div/div[1]/div/a[7]'))
@@ -212,13 +206,13 @@ def get_balance_alfa(name_director):
                     EC.presence_of_element_located(
                         (By.XPATH,
                          '/html/body/div[1]/div/div[1]/section/div/div[1]/div/div/div/div[1]/button/span[2]'))).text
-
                 mail_company = WebDriverWait(browser, 10).until(
                     EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div[1]/div/div[3]'))).text
                 message = mail_company.split('\n')
                 start = 0
                 end = 3
-                while end <= len(message):
+
+                while end < len(message):
                     mes = message[start:end]
                     if len(mes[1].split(' ')) == 2:
                         mes[1] = make_aware(
@@ -228,9 +222,7 @@ def get_balance_alfa(name_director):
                         mes[1] = make_aware(datetime.strptime(str(mes[1] + ", 00:00"), "%d %B %Y, %H:%M"))
                     else:
                         mes[1] = timezone.now()
-                    print(spisok_name[i])
-                    account = BankAccount.objects.filter(bank_id=2, company_id__name=spisok_name[i])
-                    print(account)
+                    account = BankAccount.objects.filter(bank_id=2, company_id__name=name_company)
                     if not Mailbank.objects.filter(date_mail=mes[1], account_id=account[0].id,
                                                    content_mail=mes[2]).exists():
                         Mailbank.objects.create(account_id=account[0].id, title_mail=mes[0],
@@ -247,6 +239,7 @@ def get_balance_alfa(name_director):
                         (By.XPATH, '//*[@id="corp-header"]/div/div[1]/div/div/div/div[1]/div[2]/div/div[2]'))
                 )
                 radio_button = list_company_temp.find_elements_by_class_name('radio__container_umh77')
+                count += 1
 
 
 def get_balance_modul(account=None, login=None, password=None):
@@ -260,18 +253,21 @@ def get_balance_modul(account=None, login=None, password=None):
     response = httpx.post(url=url, headers=headers).json()
     a = {}
     for i in response:
-        a[f"ООО{i['companyName'].split('ОТВЕТСТВЕННОСТЬЮ')[-1]}"] = {k['accountName']: k['balance'] for k in
-                                                                     i['bankAccounts']}
+        a[f"ООО{i['companyName'].split('ОТВЕТСТВЕННОСТЬЮ')[-1]}"] = {k['accountName']: (k['balance'], k['status']) for k
+                                                                     in i['bankAccounts']}
     for i in a.items():
         company = i[0]
         balance: int = 0
+        in_block = False
         for k in i[1].values():
-            balance += k
+            balance += k[0]
+            if k[1] != "New":
+                in_block = True
         BankAccount.objects.filter(company__name__iexact=company, bank_id=3).update(
             balance=balance,
-            date_updated=timezone.now()
+            date_updated=timezone.now(),
+            in_block=in_block
         )
-        print(balance)
 
 
 def get_balance_raif(account, login=None, password=None):
@@ -296,6 +292,16 @@ def get_balance_raif(account, login=None, password=None):
         balance = float(c.split("₽")[0].replace(" ", ""))
         print(balance)
 
+        status_block = None
+        try:
+            status_block = WebDriverWait(browser, 180).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-status'))).text
+        except Exception as E:
+            in_block = False
+        if status_block:
+            in_block = True
+
+        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now(), in_block=in_block)
         browser.get('https://www.rbo.raiffeisen.ru/messages')
         mail = WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'b-spreadsheet__main'))
@@ -303,13 +309,11 @@ def get_balance_raif(account, login=None, password=None):
         if mail:
             get_message_raif(text=mail, account=account)
 
-        BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
-
 
 def get_balance_psb(account, login=None, password=None):
     url = "https://business.psbank.ru/auth/login"
     options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
+    # options.add_argument('--headless')
     options.add_argument("--start-maximized")
     options.add_argument('window-size=2560,1440')
     with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=options,
@@ -317,37 +321,51 @@ def get_balance_psb(account, login=None, password=None):
         browser.get(url)
 
         WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.NAME, 'login'))).send_keys(str(login))
+            EC.presence_of_element_located(
+                (By.NAME, 'login'))).send_keys(login)
 
         WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys(
-            str(password))
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys(password)
 
         WebDriverWait(browser, 10).until(
-            EC.element_to_be_clickable((By.XPATH,
-                                        '/html/body/smb-app/smb-login/div/div[1]/div/smb-login-form/div/form/div[3]/div[2]/button'))).click()
+            EC.element_to_be_clickable(
+                (By.XPATH,
+                 '/html/body/smb-app/smb-login/div/div[1]/div/smb-login-form/div/form/div[3]/div[2]/psb-button/button'))).click()
 
+        WebDriverWait(browser, 10).until(
+            EC.element_to_be_clickable(
+                (By.XPATH,
+                 '/html/body/smb-app/smb-app-main/div/div/div/div[1]/smb-aside/aside/div/div/smb-menu/div/div/ul[1]/li[2]/a'))).click()
+
+        info_account = WebDriverWait(browser, 10).until(EC.element_to_be_clickable(
+            (By.XPATH,
+             '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-accounts/section/smb-account-groups/div/div')))
+
+        balance_account = info_account.find_elements_by_class_name('content-row')
+
+        for i in balance_account:
+            p = i.text.split('\n')
+            if p[0] == "Расчётный":
+                chet = float(p[2].split('₽')[0].replace(',', '.').replace(" ", ""))
+            elif p[0] == "Карточный":
+                browser.get(f"https://business.psbank.ru/accounts/account/{p[1].replace(' ', '')}/cards")
         card_balance = WebDriverWait(browser, 60).until(
             EC.presence_of_element_located(
                 (By.XPATH,
-                 '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-main/smb-main-details/div[1]/div/smb-account-section/section/mat-tab-group/div/mat-tab-body[1]/div/div/div[4]/div/smb-account-cards/div/div/smb-card-container/div/div/div[1]/div[2]/div[2]'))).text
+                 '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-account/section/mat-tab-group/div'))).text
 
-        card = float(card_balance.split(" ")[1].replace(',', '.'))
+        card = float(card_balance.split(" ")[-2].replace(",", ".").replace(" ", ""))
 
-        chet_balance = WebDriverWait(browser, 60).until(
-            EC.presence_of_element_located(
-                (By.XPATH,
-                 '/html/body/smb-app/smb-app-main/div/div/div/div[1]/smb-aside/aside/div/div/smb-menu/div/div/ul[1]/li[2]/div[2]/scroll-bar/div/div[2]/div/a[2]/span'))).text
-        chet = float(chet_balance.split('\n')[-1].split(' ')[0])
         balance = card + chet
-
         BankAccount.objects.filter(pk=account).update(balance=balance, date_updated=timezone.now())
 
         browser.get('https://business.psbank.ru/correspondence')
 
         mail_temp = WebDriverWait(browser, 10).until(
-            EC.element_to_be_clickable((By.XPATH,
-                                        '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-correspondence/smb-letter-section/section/div[2]/smb-mailing-list/div'))).text
+            EC.element_to_be_clickable(
+                (By.XPATH,
+                 '/html/body/smb-app/smb-app-main/div/div/div/div[2]/smb-correspondence/smb-letter-section/section/div[2]/smb-mailing-list/div'))).text
 
         mail = mail_temp.split('\n')[3::]
         if mail:

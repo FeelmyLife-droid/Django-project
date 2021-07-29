@@ -2,8 +2,8 @@ import json
 from datetime import datetime, timedelta
 
 import telebot
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.http import require_POST, require_GET
+from django.http import HttpResponse
+
 from django.views.decorators.csrf import csrf_exempt
 
 API_TOKEN = '1201963552:AAHsOn56nBBxrG7ybH7ud7ieK8dnaRIs2_E'

@@ -4,19 +4,36 @@
 
 
 {% block content %}
+
 <div class="row">
-    <form class="form-group" method="post">{% csrf_token %}
-        {{ form.as_p }}
+    <form class="form-group" method="post">
+        {% csrf_token %}
+<!--        {{form.as_p}}-->
+        {% for field in form %}
+            <input type="text" name="{{field.name}}" placeholder="{{field.name}}">
+            {% if field.name == 'legal_address' %}
+            <input type="text" name="address" placeholder="Адрес">
+            {% endif %}
+
+        {% endfor %}
+<!--        {% if form.legal_address.name == 'Юр.Адресс' %}-->
+            <input type="text" name="address" placeholder="Адрес">
+<!--        {% endif %}-->
         <input class="btn btn-primary" type="submit" value="Save">
     </form>
 </div>
-<div class="row">
-    <div class="col-md-3">
-        <a class="btn btn-primary" href="{% url 'directors:add_directors' %}" role="button">Добавить директора</a>
-    </div>
-    <div class="col-md-3">
-        <a class="btn btn-primary" href="{% url 'bank:bank_add' %}" role="button">Назад</a>
-    </div>
-</div>
+
+
+
+<!--<input type="text" id="suggest1">-->
+<!--<div class="row">-->
+<!--    <div class="col-md-3">-->
+<!--        <a class="btn btn-primary" href="{% url 'directors:add_directors' %}" role="button">Добавить директора</a>-->
+<!--    </div>-->
+<!--    <div class="col-md-3">-->
+<!--        <a class="btn btn-primary" href="{% url 'bank:bank_add' %}" role="button">Назад</a>-->
+<!--    </div>-->
+<!--</div>-->
+
 {% endblock content %}
 
