@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from Company.utils import slugify
 from Director.models import Director
@@ -6,7 +7,7 @@ from Director.models import Director
 
 class Company(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название фирмы')
-    slug = models.SlugField(max_length=100, verbose_name='Название на латинице',blank=True)
+    slug = models.SlugField(max_length=100, verbose_name='Название на латинице', blank=True)
     inn = models.CharField(max_length=255, verbose_name='ИНН')
     okved = models.CharField(max_length=255, verbose_name='ОКВЭД')
     legal_address = models.CharField(max_length=255, verbose_name='Юр.Адресс')
@@ -21,10 +22,10 @@ class Company(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+        self.name = f'ООО "{self.name.title()}"'
         self.slug = slugify(self.name)
-        self.email = str(self.slug) + str(self.inn[:-3:-1])+'@mailtorg.ru'
+        self.email = str(self.slug) + str(self.inn[:-3:-1]) + '@mailtorg.ru'
         super().save(*args, **kwargs)
-
 
     class Meta:
         verbose_name = 'Фирма'

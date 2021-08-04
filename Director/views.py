@@ -1,10 +1,8 @@
-from django.db.models import Sum
 from django.urls import reverse
-from django.views.generic import ListView, TemplateView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView
 
 from Company.models import Company
 from Director.models import Director
-from bank.models import BankAccount
 
 from Director.utils import check_age
 
@@ -19,7 +17,6 @@ class DirectorAdd(CreateView):
     model = Director
     template_name = "Director/director_form.html"
     fields = '__all__'
-    print(fields)
 
     def get_success_url(self):
         return reverse('directors:directors')
@@ -33,5 +30,4 @@ class DirectorDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context['age'] = check_age(self.object.date_of_birth)
         context['firms'] = Company.objects.filter(directors_id=self.object.pk)
-        print(context)
         return context

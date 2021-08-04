@@ -18,13 +18,13 @@ from bank.models import BankAccount, Mailbank
 locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
 
 
-@shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
+# @shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance(account, bank_id, login=None, password=None):
     methods = {
-        # 1: get_balance_otk,
-        # 2: get_balance_alfa,
-        # 3: get_balance_modul,
-        # 4: get_balance_raif,
+        1: get_balance_otk,
+        2: get_balance_alfa,
+        3: get_balance_modul,
+        4: get_balance_raif,
         5: get_balance_psb,
     }
     method = methods.get(bank_id)
@@ -33,12 +33,12 @@ def get_balance(account, bank_id, login=None, password=None):
 
 @shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
 def update_balance():
-    firms = BankAccount.objects.exclude(bank_id=2)
-    for firm in firms:
-        get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
-    # directors = Director.objects.all()
-    # for dir in directors:
-    #     get_balance_alfa.delay(dir.pk)
+    # firms = BankAccount.objects.exclude(bank_id=2)
+    # for firm in firms:
+    #     get_balance.delay(firm.pk, firm.bank.pk, firm.login_bank, firm.password_bank)
+    directors = Director.objects.all()
+    for dir in directors:
+        get_balance_alfa.delay(dir.pk)
 
 
 def get_message_otk(account: int, text_mail: str):
@@ -145,7 +145,7 @@ def get_mail_alfa(browser: webdriver.Remote, name_company: str) -> None:
         end += 3
 
 
-# @shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
+@shared_task(max_retries=3, default_retry_delay=60, soft_time_limit=300, autoretry_for=(Exception,))
 def get_balance_alfa(name_director):
     """ОК"""
     accounts = BankAccount.objects.filter(company__directors=name_director, bank_id=2)
@@ -170,66 +170,55 @@ def get_balance_alfa(name_director):
             button = WebDriverWait(browser, 180).until(
                 EC.element_to_be_clickable((By.XPATH, '//*[@id="password-submit"]')))
             browser.execute_script("arguments[0].click();", button)
+            name_firm = WebDriverWait(browser, 60).until(
+                EC.presence_of_element_located(
+                    (By.XPATH,
+                     '/html/body/div[1]/div[1]/div[1]/section/div/div[1]/div/div/div/div[1]/button/span[2]'))).text
+            status_account = False
+            try:
+                block = WebDriverWait(browser, 5).until(
+                    EC.presence_of_element_located(
+                        (By.XPATH,
+                         '/html/body/div[1]/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[1]/div[2]/div/div/div/div[1]/div[3]/div/a/span'))).text
+                if block:
+                    status_account = True
+            except:
+                pass
             WebDriverWait(browser, 60).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, '/html/body/div[1]/div[1]/div[1]/section/div/div[1]/div/div/div/div[1]/button'))).click()
+
             list_company_temp = WebDriverWait(browser, 60).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, '//*[@id="corp-header"]/div/div[1]/div/div/div/div[1]/div[2]/div/div[2]'))
             )
-            spisok_temp = list_company_temp.text.split('\n')
-            if len(spisok_temp) <= 3:
-                spisok = spisok_temp[1::]
-            elif len(spisok_temp) > 3:
-                spisok = spisok_temp[2::]
-            spisok_name = []
-            start = 0
-            end = 2
-            while end <= len(spisok):
-                mes = spisok[start:end]
-                spisok_name.append(mes[0])
-                BankAccount.objects.filter(company__name__iexact=mes[0], bank_id=2).update(
-                    balance=mes[1].split('\u2009')[0].replace(",", ".").replace(" ", ""),
-                    date_updated=timezone.now()
-                )
-                start = end
-                end += 2
-            radio_button = list_company_temp.find_elements_by_class_name('radio__container_umh77')
-            count = 0
-            while count < len(radio_button):
-                radio_button[count].click()
-                WebDriverWait(browser, 60).until(
-                    EC.element_to_be_clickable(
-                        (By.XPATH, '/html/body/div[1]/div/div[1]/section/div/div[3]/div/div/div/div[1]/div/a[7]'))
-                ).click()
-                name_company = WebDriverWait(browser, 10).until(
+            spisok_company = {}
+            for i, k in enumerate(list_company_temp.find_elements_by_class_name('radio__container_1y1vr')):
+                spisok_company[f'firm{[i]}'] = str(k.text).split("\n")
+
+            for i in spisok_company.values():
+                if i[0] == name_firm:
+                    i.append(status_account)
+
+            for i in range(1, len(list_company_temp.find_elements_by_class_name('radio__container_1y1vr'))):
+                list_company_temp.find_elements_by_class_name('radio__container_1y1vr')[i].click()
+                name_firm = WebDriverWait(browser, 60).until(
                     EC.presence_of_element_located(
                         (By.XPATH,
-                         '/html/body/div[1]/div/div[1]/section/div/div[1]/div/div/div/div[1]/button/span[2]'))).text
-                mail_company = WebDriverWait(browser, 10).until(
-                    EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div[1]/div/div[3]'))).text
-                message = mail_company.split('\n')
-                start = 0
-                end = 3
-
-                while end < len(message):
-                    mes = message[start:end]
-                    if len(mes[1].split(' ')) == 2:
-                        mes[1] = make_aware(
-                            datetime.strptime(str(mes[1] + " " + str(datetime.now().year) + ", 00:00"),
-                                              "%d %B %Y, %H:%M"))
-                    elif len(mes[1].split(' ')) == 3:
-                        mes[1] = make_aware(datetime.strptime(str(mes[1] + ", 00:00"), "%d %B %Y, %H:%M"))
-                    else:
-                        mes[1] = timezone.now()
-                    account = BankAccount.objects.filter(bank_id=2, company_id__name=name_company)
-                    if not Mailbank.objects.filter(date_mail=mes[1], account_id=account[0].id,
-                                                   content_mail=mes[2]).exists():
-                        Mailbank.objects.create(account_id=account[0].id, title_mail=mes[0],
-                                                sender_mail='Альфа-Банк', content_mail=mes[2],
-                                                date_mail=mes[1])
-                    start = end
-                    end += 3
+                         '/html/body/div[1]/div[1]/div[1]/section/div/div[1]/div/div/div/div[1]/button/span[2]'))).text
+                status_account = False
+                try:
+                    block = WebDriverWait(browser, 1).until(
+                        EC.presence_of_element_located((By.XPATH,
+                                                        '/html/body/div[1]/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[1]/div['
+                                                        '2]/div/div/div/div[1]/div[3]/div/a/span'))).text
+                    if block:
+                        status_account = True
+                except:
+                    pass
+                for i in spisok_company.values():
+                    if i[0] == name_firm:
+                        i.append(status_account)
                 WebDriverWait(browser, 60).until(
                     EC.element_to_be_clickable(
                         (By.XPATH,
@@ -238,8 +227,12 @@ def get_balance_alfa(name_director):
                     EC.element_to_be_clickable(
                         (By.XPATH, '//*[@id="corp-header"]/div/div[1]/div/div/div/div[1]/div[2]/div/div[2]'))
                 )
-                radio_button = list_company_temp.find_elements_by_class_name('radio__container_umh77')
-                count += 1
+
+            for i in spisok_company.values():
+                BankAccount.objects.filter(company__name__iexact=i[0], bank_id=2).update(
+                    balance=i[1].split('\u2009')[0].replace(",", ".").replace(" ", ""),
+                    date_updated=timezone.now(), in_block=i[2]
+                )
 
 
 def get_balance_modul(account=None, login=None, password=None):
@@ -296,7 +289,7 @@ def get_balance_raif(account, login=None, password=None):
         try:
             status_block = WebDriverWait(browser, 180).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '.b-home-container__accounts-list-item-status'))).text
-        except Exception as E:
+        except:
             in_block = False
         if status_block:
             in_block = True

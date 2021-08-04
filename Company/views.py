@@ -11,6 +11,7 @@ class CompanyViews(ListView):
     model = Company
     context_object_name = 'latest_articles'
     template_name = "Company/company.html"
+    success_url = reverse_lazy('company')
 
 
 class CompanyDetail(DetailView):
@@ -27,9 +28,8 @@ class CompanyDetail(DetailView):
 
 
 class CompanyAdd(CreateView):
-    model = Company
-    template_name = "Company/company_form.html"
     form_class = CompanyForms
+    template_name = "Company/company_form.html"
 
     def get_success_url(self):
         return reverse('company:company')
