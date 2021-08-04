@@ -1,22 +1,63 @@
 {% extends "home.html" %}
-{% block title %} Directors {% endblock title %}
+{% block title %} Форма добавления директора {% endblock title %}
 {% block header %} Добавление директора {% endblock header %}
 
 
 {% block content %}
-<div class="row">
-    <div class="col-md-3">
-        <form class="form-group" method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input class="btn btn-primary" type="submit" value="Save">
-        </form>
+    <form class="form-group" method="post">{% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for={{ form.name.id_for_label }}>{{ form.name.label }}</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for={{ form.date_of_birth.id_for_label }}>{{ form.date_of_birth.label }}</label>
+                {{ form.date_of_birth }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for={{ form.inn.id_for_label }}>{{ form.inn.label }}</label>
+                {{ form.inn }}
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for={{ form.issued_by.id_for_label }}>{{ form.issued_by.label }}</label>
+                {{ form.issued_by }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for={{ form.id_passport.id_for_label }}>{{ form.id_passport.label }}</label>
+                {{ form.id_passport }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for={{ form.date_of_issue.id_for_label }}>{{ form.date_of_issue.label }}</label>
+                {{ form.date_of_issue }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for={{ form.department_сode.id_for_label }}>{{ form.department_сode.label }}</label>
+                {{ form.department_сode }}
+            </div>
+
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for={{ form.street.id_for_label }}>{{ form.street.label }}</label>
+                {{ form.street }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for={{ form.house.id_for_label }}>{{ form.house.label }}</label>
+                {{ form.house }}
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+    <div class="row">
+        <div class="col-md-1">
+            <a class="btn btn-danger" href="{% url 'company:add_company' %}" role="button">Назад</a>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-1">
-        <a class="btn btn-primary" href="{% url 'company:add_company' %}" role="button">Назад</a>
-    </div>
-</div>
 
 {% endblock content %}
 

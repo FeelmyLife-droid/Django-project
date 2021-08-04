@@ -4,46 +4,51 @@
 
 
 {% block content %}
-
-    <form method="post">{% csrf_token %}
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for={{ form.name.id_for_label }}>Название фирмы</label>
-                {{ form.name }}
+        <form class="form-group" method="post">{% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for={{ form.name.id_for_label }}>Название фирмы</label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group col-md-3">
+                    <label for={{ form.inn.id_for_label }}>ИНН фирмы</label>
+                    {{ form.inn }}
+                </div>
+                <div class="form-group col-md-3">
+                    <label for={{ form.okved.id_for_label }}>ОКВЭД фирмы</label>
+                    {{ form.okved }}
+                </div>
             </div>
-            <div class="form-group col-md-3">
-                <label for={{ form.inn.id_for_label }}>ИНН фирмы</label>
-                {{ form.inn }}
+            <div class="form-group">
+                <label for={{ form.legal_address.id_for_label }}>Юр.Адресс</label>
+                {{ form.legal_address }}
             </div>
-            <div class="form-group col-md-3">
-                <label for={{ form.okved.id_for_label }}>ОКВЭД фирмы</label>
-                {{ form.okved }}
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for={{ form.date_of_application.id_for_label }}>Дата подача</label>
+                    {{ form.date_of_application }}
+                </div>
+                <div class="form-group col-md-2">
+                    <label for={{ form.registration_date.id_for_label }}>Дата регистрации</label>
+                    {{ form.registration_date }}
+                </div>
+                <div class="form-group col-md-3">
+                    <label for={{ form.charter_number.id_for_label }}>Номер устава</label>
+                    {{ form.charter_number }}
+                </div>
+                <div class="form-group col-md-5">
+                    <label for={{ form.directors.id_for_label }}>Директор</label>
+                    {{ form.directors }}
+                </div>
             </div>
+            <button type="submit" class="btn btn-success">Сохранить</button>
+        </form>
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-danger" href="{% url 'company:company' %}" role="button">Назад</a>
+            <a class="btn btn-primary" href="{% url 'directors:add_directors' %}" role="button">Добавить директора</a>
         </div>
-        <div class="form-group address">
-            <label for={{ form.legal_address.id_for_label }}>Юр.Адресс</label>
-            {{ form.legal_address }}
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-2">
-                <label for={{ form.date_of_application.id_for_label }}>Дата подача</label>
-                {{ form.date_of_application }}
-            </div>
-            <div class="form-group col-md-2">
-                <label for={{ form.registration_date.id_for_label }}>Дата регистрации</label>
-                {{ form.registration_date }}
-            </div>
-            <div class="form-group col-md-3">
-                <label for={{ form.charter_number.id_for_label }}>Номер устава</label>
-                {{ form.charter_number }}
-            </div>
-            <div class="form-group col-md-5">
-                <label for={{ form.directors.id_for_label }}>Директор</label>
-                {{ form.directors }}
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
+    </div>
 {% endblock content %}
 
 

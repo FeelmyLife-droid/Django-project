@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import ListView, CreateView, UpdateView
 
 from Company.models import Company
-from bank.forms import MailForms
+from bank.forms import MailForms, BankAccountForm
 from bank.models import BankAccount, Bank, Mailbank
 
 
@@ -49,10 +49,17 @@ class BankAll(ListView):
         return context
 
 
+# class BankAdd(CreateView):
+#     model = BankAccount
+#     template_name = "bank/bank_form.html"
+#     fields = '__all__'
+#
+#     def get_success_url(self):
+#         return reverse('bank:bank')
+
 class BankAdd(CreateView):
-    model = BankAccount
+    form_class = BankAccountForm
     template_name = "bank/bank_form.html"
-    fields = '__all__'
 
     def get_success_url(self):
         return reverse('bank:bank')

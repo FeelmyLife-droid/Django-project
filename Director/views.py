@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
 from Company.models import Company
+from Director.forms import DirectorsForm
 from Director.models import Director
 
 from Director.utils import check_age
@@ -14,9 +15,8 @@ class DirectorViews(ListView):
 
 
 class DirectorAdd(CreateView):
-    model = Director
+    form_class = DirectorsForm
     template_name = "Director/director_form.html"
-    fields = '__all__'
 
     def get_success_url(self):
         return reverse('directors:directors')
