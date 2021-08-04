@@ -22,5 +22,7 @@ class Director(models.Model):
         verbose_name = 'Директор'
         verbose_name_plural = 'Директора'
 
+    def save(self, *args, **kwargs):
 
-
+        self.name = self.name.title()
+        super().save(*args, **kwargs)
