@@ -2,7 +2,7 @@ import httpx
 
 
 def get_balance_modul(account=None,
-                      login='MzAyYjBlYzAtYjEwOS00MDg2LWEyOGItMDNkOTcyYjE2Y2Y0YjRkYzJhNTYtZDEyMS00NDIzLWIyMjMtZmNjNTU1Mzc2NzYz',
+                      login='',
                       password=None):
     print(f'Запрос в банк MODUL {account}')
     url = "https://api.modulbank.ru/v1/account-info"
