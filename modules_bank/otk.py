@@ -39,9 +39,9 @@ def get_balance_otk(account=None, login=None, password=None):
                           command_executor='http://127.0.0.1:4444/wd/hub') as browser:
         browser.get(url)
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'username'))).send_keys('optovay')
+            EC.presence_of_element_located((By.NAME, 'username'))).send_keys('')
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'password'))).send_keys('!@#123QWEasdzxc')
+            EC.presence_of_element_located((By.NAME, 'password'))).send_keys('')
         WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, '[type=submit]'))).click()
         account = WebDriverWait(browser, 180).until(
