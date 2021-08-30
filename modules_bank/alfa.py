@@ -14,12 +14,12 @@ with webdriver.Remote(desired_capabilities=options.to_capabilities(), options=op
                       command_executor='http://127.0.0.1:4444/wd/hub') as browser:
     browser.get(url)
     WebDriverWait(browser, 180).until(
-        EC.presence_of_element_located((By.NAME, 'username'))).send_keys("pobeda@mailtorg.ru")
+        EC.presence_of_element_located((By.NAME, 'username'))).send_keys("")
     button = WebDriverWait(browser, 180).until(
         EC.element_to_be_clickable((By.XPATH, '//*[@id="login-submit"]')))
     browser.execute_script("arguments[0].click();", button)
     WebDriverWait(browser, 180).until(
-        EC.presence_of_element_located((By.NAME, 'password'))).send_keys("ASDzxc123qwe")
+        EC.presence_of_element_located((By.NAME, 'password'))).send_keys("")
     button = WebDriverWait(browser, 180).until(
         EC.element_to_be_clickable((By.XPATH, '//*[@id="password-submit"]')))
     browser.execute_script("arguments[0].click();", button)
