@@ -193,11 +193,11 @@ def get_balance_psb(account, login=None, password=None):
         browser.get(url)
 
         WebDriverWait(browser, 180).until(
-            EC.presence_of_element_located((By.NAME, 'login'))).send_keys("pobeda123456")
+            EC.presence_of_element_located((By.NAME, 'login'))).send_keys(str(login))
 
         WebDriverWait(browser, 180).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'input.form-control:nth-child(1)'))).send_keys(
-            "ASDzxc123qwe")
+            str(password))
 
         button = WebDriverWait(browser, 180).until(
             EC.element_to_be_clickable((By.XPATH,
